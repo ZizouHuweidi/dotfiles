@@ -1,0 +1,164 @@
+# vi: foldmethod=marker foldlevel=0
+# vim: ft=config
+
+# settings {{{
+set shell zsh
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
+set drawbox
+# make sure trash folder exists
+%mkdir -p ~/.trash
+set previewer ~/.config/lf/lf_kitty_preview
+set cleaner ~/.config/lf/lf_kitty_clean
+
+# set shellopts '-eu'
+# set ifs "\n"
+# set scrolloff 10
+# set icons
+# set period 1
+# set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
+# set autoquit on
+# }}}
+
+
+# keybinds {{{
+# execute file
+map x $$f
+map X !$f
+map <enter> shell
+map <delete> trash
+# Toggle hidden files
+map . set hidden!
+# map <delete> delete
+# map <c-f> $lf -remote "send $id select \"$(fzf)\""
+# map J $lf -remote "send $id cd $(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf)"
+# map gh
+# map g top
+# map D delete
+# map E extract
+# map C copyto
+# map M moveto
+# map <c-n> push :mkdir<space>
+# map <c-r> reload
+# map <c-s> set hidden!
+# map <enter> shell
+# map x $$f
+# map X !$f
+# map o &mimeopen "$f"
+# map O $mimeopen --ask "$f"
+#
+# map A rename # at the very end
+# map c push A<c-u> # new rename
+# map I push A<c-a> # at the very beginning
+# map i push A<a-b><a-b><a-f> # before extension
+# map a push A<a-b> # after extension
+# map B bulkrename
+# map b $setbg $f
+#
+# map <c-e> down
+# map <c-y> up
+# map V push :!nvim<space>
+#
+# map W $setsid -f $TERMINAL >/dev/null 2>&1
+#
+# map Y $printf "%s" "$fx" | xclip -selection clipboard
+
+# open file
+#map o &mimeopen $f
+#map O $mimeopen --ask $f
+# }}}
+
+# commands {{{
+
+cmd open ${{
+    test -L $f && f=$(readlink -f $f)
+    case $(file --mime-type $f -b) in
+        text/*) $EDITOR $fx;;
+        image/*) imv $fx;;
+        video/*) vlc $fx;;
+        *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
+    esac
+}}
+
+# move current file or selected files to trash folder
+# (also see 'man mv' for backup/overwrite options)
+cmd trash %set -f; mv "$fx" ~/.trash
+
+# define a custom 'rename' command without prompt for overwrite
+# cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
+# map r push :rename<space>
+
+# define a custom 'delete' command
+# cmd delete ${{
+#     set -f
+#     printf "$fx\n"
+#     printf "delete?[y/n]"
+#     read ans
+#     [ $ans = "y" ] && rm -rf $fx
+# }}
+
+# cmd delete ${{
+# 	clear; tput cup $(($(tput lines)/3)); tput bold
+# 	set -f
+# 	printf "%s\n\t" "$fx"
+# 	printf "delete?[y/N]"
+# 	read ans
+# 	[ $ans = "y" ] && rm -rf -- $fx
+# }}
+#
+# cmd moveto ${{
+# 	clear; tput cup $(($(tput lines)/3)); tput bold
+# 	set -f
+# 	clear; echo "Move to where?"
+# 	dest="$(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf | sed 's|~|$HOME|')" &&
+# 	for x in $fx; do
+# 		eval mv -iv \"$x\" \"$dest\"
+# 	done &&
+# 	notify-send "🚚 File(s) moved." "File(s) moved to $dest."
+# }}
+#
+# cmd copyto ${{
+# 	clear; tput cup $(($(tput lines)/3)); tput bold
+# 	set -f
+# 	clear; echo "Copy to where?"
+# 	dest="$(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf | sed 's|~|$HOME|')" &&
+# 	for x in $fx; do
+# 		eval cp -ivr \"$x\" \"$dest\"
+# 	done &&
+# 	notify-send "📋 File(s) copied." "File(s) copies to $dest."
+# }}
+
+# extract the current file with the right command
+# (xkcd link: https://xkcd.com/1168/)
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+
+# compress current file or selected files with tar and gunzip
+cmd tar ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar czf $1.tar.gz $1
+    rm -rf $1
+}}
+
+# compress current file or selected files with zip
+cmd zip ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    zip -r $1.zip $1
+    rm -rf $1
+}}
+
+# }}}
