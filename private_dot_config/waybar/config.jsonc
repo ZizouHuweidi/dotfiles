@@ -15,7 +15,8 @@
     "custom/notification"
   ],
   "modules-right": [
-    "group/compute",
+    "cpu",
+    "temperature",
     "group/memory",
     "pulseaudio",
     "custom/sep",

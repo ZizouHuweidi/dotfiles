@@ -172,8 +172,8 @@ for_window [con_mark="SCRATCHPAD_term"] border pixel 5
 bindsym $mod+Shift+s exec ~/.cargo/bin/sway-scratchpad --command "pavucontrol" --mark sound --width 75 --height 75
 for_window [con_mark="SCRATCHPAD_sound"] border pixel 5
 
-bindsym $mod+m exec ~/.cargo/bin/sway-scratchpad --command "kitty cmus" --mark music --width 50 --height 50
-# bindsym $mod+m exec ~/.cargo/bin/sway-scratchpad --command "gnome-music" --mark music --width 75 --height 75
+# bindsym $mod+m exec ~/.cargo/bin/sway-scratchpad --command "kitty cmus" --mark music --width 50 --height 50
+bindsym $mod+m exec ~/.cargo/bin/sway-scratchpad --command "gnome-music" --mark music --width 75 --height 75
 for_window [con_mark="SCRATCHPAD_music"] border pixel 5
 
 bindsym $mod+Shift+f exec ~/.cargo/bin/sway-scratchpad --command "kitty lf" --mark lf --width 75 --height 75

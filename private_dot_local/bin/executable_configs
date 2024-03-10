@@ -6,7 +6,7 @@ EDITOR="kitty -e nvim"
 # An array of options to choose.
 # You can edit this list to add/remove config files.
 declare -a options=(
-	"nix - $HOME/nixos/configuration.nix"
+	"nix - $HOME/.local/share/nixos/nixos/configuration.nix"
 	"sway - $HOME/.config/sway/config"
 	"waybar - $HOME/.config/waybar/config.jsonc"
 	"config - $HOME/.local/bin/configs"
