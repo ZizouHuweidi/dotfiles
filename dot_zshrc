@@ -111,6 +111,7 @@ alias pacdel="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro su
 alias visudo="sudo -E -s nvim"
 alias ports="sudo netstat -tulpn | grep LISTEN"
 alias cat="bat"
+alias py="python"
 
 
 
@@ -330,6 +331,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 # bindkey -s '^e' 'nvim $(fzf)^M'
 bindkey -s '^f' 'lf^M'
 bindkey -s '^h' 'htop^M'
+bindkey -s '^g' 'lazygit^M'
 bindkey -s '^n' 'nvim .^M'
 bindkey -s '^v' 'nvim\n'
 #bindkey -s '^f' 'zi^M'
@@ -357,10 +359,10 @@ compinit
 # autoload edit-command-line; zle -N edit-command-line
 # bindkey '^e' edit-command-line
 # }}}
+# Add JBang to environment
+alias j!=jbang
+export PATH="$HOME/.jbang/bin:$PATH"
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
-# Add JBang to environment
-alias j!=jbang
-export PATH="$HOME/.jbang/bin:$PATH"

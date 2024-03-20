@@ -8,4 +8,19 @@ return {
       },
     },
   },
+
+
+{
+  "stevearc/conform.nvim",
+  opts = {
+    formatters_by_ft = {
+        python = {
+          -- To fix lint errors.
+          "ruff_fix",
+          -- To run the Ruff formatter.
+          "ruff_format",
+        },
+    },
+    },
+}
 }
