@@ -166,20 +166,20 @@ bindsym Ctrl+Print exec slurp | xargs -I {} grim -s 2 -t png -g {} - | tesseract
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-bindsym $mod+Shift+Return exec ~/.cargo/bin/sway-scratchpad --command "kitty" --mark term --width 75 --height 75
+bindsym $mod+Shift+Return exec ~/.config/sway/bin/sway-scratchpad --command "kitty" --mark term --width 75 --height 75
 for_window [con_mark="SCRATCHPAD_term"] border pixel 5
 
-bindsym $mod+Shift+s exec ~/.cargo/bin/sway-scratchpad --command "pavucontrol" --mark sound --width 75 --height 75
+bindsym $mod+Shift+s exec ~/.config/sway/bin/sway-scratchpad --command "pavucontrol" --mark sound --width 75 --height 75
 for_window [con_mark="SCRATCHPAD_sound"] border pixel 5
 
-# bindsym $mod+m exec ~/.cargo/bin/sway-scratchpad --command "kitty cmus" --mark music --width 50 --height 50
-bindsym $mod+m exec ~/.cargo/bin/sway-scratchpad --command "gnome-music" --mark music --width 75 --height 75
+bindsym $mod+m exec ~/.config/sway/bin/sway-scratchpad --command "kitty cmus" --mark music --width 50 --height 50
+# bindsym $mod+m exec ~/.config/sway/bin/sway-scratchpad --command "gnome-music" --mark music --width 75 --height 75
 for_window [con_mark="SCRATCHPAD_music"] border pixel 5
 
-bindsym $mod+Shift+f exec ~/.cargo/bin/sway-scratchpad --command "kitty lf" --mark lf --width 75 --height 75
+bindsym $mod+Shift+f exec ~/.config/sway/bin/sway-scratchpad --command "kitty lf" --mark lf --width 75 --height 75
 for_window [con_mark="SCRATCHPAD_lf"] border pixel 5
 
-bindsym $mod+n exec ~/.cargo/bin/sway-scratchpad --command "obsidian" --mark notes
+bindsym $mod+n exec ~/.config/sway/bin/sway-scratchpad --command "obsidian" --mark notes
 for_window [con_mark="SCRATCHPAD_notes"] border pixel 5
 
 # }}}
@@ -231,9 +231,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-# bindsym $mod+s layout stacking
+bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
-bindsym $mod+s layout toggle split
+bindsym $mod+u layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
