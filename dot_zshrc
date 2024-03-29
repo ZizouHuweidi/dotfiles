@@ -89,6 +89,7 @@ autoload -Uz colors && colors
 #export MANWIDTH=999
 export GOPATH=$HOME/.local/share/go
 export PATH=$HOME/.local/share/go/bin:$PATH
+export PATH=$HOME/.cargo/bin/:$PATH
 export PATH="$HOME/.local/share/npm-packages/bin:$PATH"
 # export PATH=$HOME/go/bin:$PATH
 # Load Angular CLI autocompletion.
