@@ -6,22 +6,24 @@ EDITOR="kitty -e nvim"
 # An array of options to choose.
 # You can edit this list to add/remove config files.
 declare -a options=(
-	"nix - $HOME/.local/share/nixos/nixos/configuration.nix"
+  "setup - $HOME/setup/3-packages.sh"
 	"sway - $HOME/.config/sway/config"
+	"i3 - $HOME/.config/i3/config"
 	"waybar - $HOME/.config/waybar/config.jsonc"
-	"config - $HOME/.local/bin/configs"
 	"nvim - $HOME/.config/nvim/lua/config/lazy.lua"
 	"kitty - $HOME/.config/kitty/kitty.conf"
 	"lf - $HOME/.config/lf/lfrc"
-	"wofi - $HOME/.config/wofi/config"
+	"rofi - $HOME/.config/rofi/config.rasi"
 	"zsh - $HOME/.zshrc"
+  "cv - $HOME/Documents/cv/main.tex"
+  "configs - $HOME/.local/bin/configs"
 	"books - $HOME/.local/bin/books"
 	# "quit"
 )
 
 # Piping the above array into dmenu.
 # We use "printf '%s\n'" to format the array one item to a line.
-choice=$(printf '%s\n' "${options[@]}" | wofi --show dmenu -i 20 -p 'Edit Config')
+choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i 20 -p 'Edit Config')
 
 # What to do when/if we choose 'quit'.
 if [[ "$choice" == "quit" ]]; then

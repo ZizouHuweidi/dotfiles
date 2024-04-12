@@ -1,12 +1,12 @@
 # vi: foldmethod=marker foldlevel=0
 # ft = swayconfig
-include ~/.config/sway/themes/gruvbox.conf
+include ~/.config/i3/themes/gruvbox.conf
+
 
 #Settings {{{
 
 set $mod Mod4
 set $alt Mod1
-set $gnome-schema org.gnome.desktop.interface
 
 # font pango:JetBrains Mono Medium 8
 font pango:FiraCode Nerd Font Mono 8
@@ -23,7 +23,6 @@ gaps outer 3
 smart_gaps off
 
 # Activate smart borders (always)
-smart_borders off
 # Borders
 default_border pixel 3
 default_floating_border normal
@@ -35,78 +34,37 @@ default_floating_border normal
 
 popup_during_fullscreen smart
 
-# for_window [class=".*"] opacity 0.90
-for_window [app_id=".*"] opacity 0.95
-# for_window [app_id="kitty"] opacity 0.90
-
-# }}}
-
-# Output {{{
-output * bg ~/Wallpapers/gruvbox_samuraimummy.jpg fill
-output * scale 1.0
-# output * bg "#282828" solid_color
-# }}}
-
-# Inputs {{{
-
-input * {
-    xkb_layout  "us,ara"
-    xkb_options "grp:alt_space_toggle,caps:swapescape"
-    xkb_numlock enable
-}
-
-input type:touchpad {
-    tap enabled
-    natural_scroll disabled
-    middle_emulation enabled
-}
-
-
-
-seat * {
-	hide_cursor 8000  
-  xcursor_theme Adwaita
-}
 
 # }}}
 
 # Autostart {{{
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec wl-paste --type text --watch cliphist store
-exec wl-paste --type image --watch cliphist store
-exec swaync
 
-set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
-exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-exec dbus-update-activation-environment --systemd --all
+# run picom
+exec_always --no-startup-id picom &
 
-exec gammastep-indicator
-exec blueman-tray
-# exec /usr/lib/kdeconnectd -platform offscreen 
+# run dunst
+exec_always --no-startup-id dunst &
 
-exec nm-applet --indicator
+exec --no-startup-id nm-applet --indicator
 
+# set wallpaper with feh
+exec_always feh --no-fehbg --bg-scale $HOME/Wallpapers/gruvbox_samuraimummy.jpg
 
-exec swayidle -w \
-	timeout 1200 'swaylock -f' \
-	timeout 1500 'swaymsg "output * dpms off"' \
-	resume 'swaymsg "output * dpms on"; swaylock -f'
+exec_always "setxkbmap -layout us,ara -option grp:alt_space_toggle,caps:swapescape"
+
+exec --no-startup-id xfce4-power-manager
+
+# exec --no-startup-id gammastep-indicator
+exec --no-startup-id dex --autostart --environment i3
+
+exec --no-startup-id blueman-applet
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # }}}
 
 # keys {{{
 
-# -- gestures
-
-bindgesture swipe:right workspace next
-bindgesture swipe:left workspace prev
-
-bindgesture swipe:up workspace back_and_forth
-bindgesture swipe:down workspace back_and_forth
 
 # -- Apps --
 
@@ -120,10 +78,11 @@ bindsym $mod+e exec  emote
 
 # -- rofi --
 bindsym $mod+d exec rofi -show drun
-bindsym $mod+Control+c exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
-bindsym $mod+x exec  wlogout --protocol layer-shell -b 5 -T 400 -B 400
+# bindsym $mod+Control+c exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
+# bindsym $mod+x exec  wlogout --protocol layer-shell -b 5 -T 400 -B 400
 bindsym $mod+Control+b exec  ~/.local/bin/books
 bindsym $mod+Control+d exec ~/.local/bin/configs
+
 
 # -- Function keys --
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
@@ -137,12 +96,9 @@ bindsym $mod+XF86AudioRaiseVolume 			exec "playerctl next"
 bindsym $mod+XF86AudioLowerVolume 			exec "playerctl previous"
 bindsym $mod+XF86AudioMute 			exec "playerctl play-pause"
 
-
-
 # -- Screenshots --
 # Screenshot whole screen
-# bindsym Print exec grim -t png $HOME/Pictures/Screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-bindsym Print exec grim -g "$(slurp)" -t png - | swappy -f -
+bindsym Print exec grim -t png $HOME/Pictures/Screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 
 # Screenshot region of screen
 bindsym $mod+Print exec slurp | grim -t png -g - $HOME/Pictures/Screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
@@ -150,47 +106,34 @@ bindsym $mod+Print exec slurp | grim -t png -g - $HOME/Pictures/Screenshots/$(da
 # Save screenshot to clipboard
 bindsym $alt+Print exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
 
+# # Screenshot region then quick edit it
+# bindsym Ctrl+Print exec grim -g "$(slurp)" -t png - | swappy -f -
+
 # Screenshot current window
 # bindsym $alt+Print exec swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp | grim -t png -g - $HOME/Pictures/Screenshots/Screenshot_2022-07-25-13-30-16_1366x768.png/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 
 # Parse text on screen and copy to clipboard
 bindsym Ctrl+Print exec slurp | xargs -I {} grim -s 2 -t png -g {} - | tesseract - - | wl-copy -n
 
-# }}}
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
 
-# scratchpads {{{
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
-
-bindsym $mod+Shift+Return exec ~/.config/sway/bin/sway-scratchpad --command "kitty" --mark term --width 75 --height 75
-for_window [con_mark="SCRATCHPAD_term"] border pixel 5
-
-bindsym $mod+Shift+s exec ~/.config/sway/bin/sway-scratchpad --command "pavucontrol" --mark sound --width 75 --height 75
-for_window [con_mark="SCRATCHPAD_sound"] border pixel 5
-
-bindsym $mod+m exec ~/.config/sway/bin/sway-scratchpad --command "kitty cmus" --mark music --width 50 --height 50
-for_window [con_mark="SCRATCHPAD_music"] border pixel 5
-
-bindsym $mod+Shift+f exec ~/.config/sway/bin/sway-scratchpad --command "kitty lf" --mark lf --width 75 --height 75
-for_window [con_mark="SCRATCHPAD_lf"] border pixel 5
-
-bindsym $mod+n exec ~/.config/sway/bin/sway-scratchpad --command "obsidian" --mark notes
-for_window [con_mark="SCRATCHPAD_notes"] border pixel 5
+tiling_drag modifier titlebar
 
 # }}}
 
-# sway keys {{{
+# i3 keys {{{
 
 # Lockscreen
-bindsym $alt+Control+l exec swaylock
+bindsym $alt+Control+l exec i3lock
 
 # sticky window
 bindsym $mod+grave sticky toggle
 
 # Restart/Quit sway session 
-bindsym $mod+Shift+r reload
-# Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+q exec sway exit
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -314,7 +257,6 @@ bindsym $mod+Control+KP_0 move container to workspace $ws10
 # }}}
 
 # Resize / Move / Gaps {{{
-
 bindsym $mod+Control+Left resize shrink width 10 px or 10 ppt
 bindsym $mod+Control+Down resize grow height 10 px or 10 ppt
 bindsym $mod+Control+Up resize shrink height 10 px or 10 ppt
@@ -332,59 +274,18 @@ bindsym $mod+Shift+Right move right 30px
 
 # }}}
 
+# scratchpads {{{
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# }}}
+
 # Rules {{{
 
-# Assign workspaces
-
-# set floating (nontiling)for apps needing it:
-for_window [class="Yad" instance="yad"] floating enable
-for_window [app_id="yad"] floating enable
-for_window [app_id="blueman-manager"] floating enable,  resize set width 40 ppt height 30 ppt
-for_window [title="Picture-in-Picture"] sticky enable
-# set floating (nontiling) for special apps:
-for_window [class="Xsane" instance="xsane"] floating enable
-# for_window [app_id="pavucontrol" ] floating enable, resize set width 40 ppt height 30 ppt
-for_window [class="qt5ct" instance="qt5ct"] floating enable, resize set width 60 ppt height 50 ppt
-for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
-for_window [class="Lxappearance"] floating enable, resize set width 60 ppt height 50 ppt
-
-# set floating for window roles
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_role="Preferences"] floating enable
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
-for_window [window_role="About"] floating enable
-for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
-for_window [app_id="firefox" title="Library"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
-for_window [app_id="firefox"] inhibit_idle fullscreen
-for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, sticky enable, resize set width 30 ppt height 40 ppt
-for_window [title="Picture in picture"] floating enable, sticky enable
-for_window [app_id="xsensors"] floating enable
-for_window [title="Save File"] floating enable
-for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
-
-# Inhibit idle
-for_window [app_id="firefox"] inhibit_idle fullscreen
-for_window [app_id="brave-browser"] inhibit_idle fullscreen
-for_window [class="Vivaldi-stable"] inhibit_idle fullscreen
-
-# workspace rules
-assign [class="Vivaldi-stable"] 1
-assign [app_id="obsidian"] 3
 # }}}
 
 # Bar {{{
-
-# hide waybar
-bindsym $mod+p exec killall -SIGUSR1 waybar
-# bindsym $mod+p bar mode toggle
-
 bar {
-	  swaybar_command waybar
+        status_command i3status-rs
 }
-
 # }}}
-
-include /etc/sway/config.d/*
