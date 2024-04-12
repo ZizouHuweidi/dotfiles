@@ -6,9 +6,8 @@ EDITOR="kitty -e nvim"
 # An array of options to choose.
 # You can edit this list to add/remove config files.
 declare -a options=(
-  "setup - $HOME/setup/3-packages.sh"
+  "setup - $HOME/code/setup/3-packages.sh"
 	"sway - $HOME/.config/sway/config"
-	"i3 - $HOME/.config/i3/config"
 	"waybar - $HOME/.config/waybar/config.jsonc"
 	"nvim - $HOME/.config/nvim/lua/config/lazy.lua"
 	"kitty - $HOME/.config/kitty/kitty.conf"

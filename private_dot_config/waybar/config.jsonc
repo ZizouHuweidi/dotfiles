@@ -79,7 +79,7 @@
     "tooltip": false
   },
   "memory": {
-    "format": "{}% "
+    "format": "{}% "
   },
   "disk": {
     "format": "<span foreground='#928374'></span>{percentage_free}% ",
