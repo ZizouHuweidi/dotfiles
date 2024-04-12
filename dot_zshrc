@@ -117,6 +117,11 @@ export PATH=$HOME/.cargo/bin/:$PATH
 # Load Angular CLI autocompletion.
 source <(ng completion script)
 source "$HOME/.rye/env"
+# bun completions
+[ -s "/home/zizou/.bun/_bun" ] && source "/home/zizou/.bun/_bun"
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 #export PATH="$PATH:./node_modules/.bin"
 # eval "`pip completion --zsh`"
 # }}}
@@ -357,6 +362,7 @@ bindkey -s '^f' 'lf^M'
 bindkey -s '^h' 'htop^M'
 bindkey -s '^n' 'nvim .^M'
 bindkey -s '^v' 'nvim\n'
+bindkey -s '^g' 'lazygit\n'
 #bindkey -s '^f' 'zi^M'
 # bindkey -s '^z' 'zi^M'
 #bindkey '^[[P' delete-char
@@ -386,9 +392,3 @@ compinit
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
-# bun completions
-[ -s "/home/zizou/.bun/_bun" ] && source "/home/zizou/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"

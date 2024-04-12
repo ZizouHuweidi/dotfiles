@@ -86,7 +86,7 @@ exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd --all
 
 exec gammastep-indicator
-exec blueman-tray
+exec blueman-applet
 # exec /usr/lib/kdeconnectd -platform offscreen 
 
 exec nm-applet --indicator
@@ -117,12 +117,15 @@ bindsym $mod+Shift+e exec  code
 bindsym $mod+Shift+v exec  kitty -e nvim
 bindsym $mod+Shift+b exec  vivaldi
 bindsym $mod+Control+n exec swaync-client -t
+# bindsym $mod+c exec dunstctl close-all
+# bindsym $mod+Control+n exec dunstctl history-pop
+# bindsym $mod+Control+t exec dunstctl set-paused toggle
 bindsym $mod+e exec  emote
+bindsym $mod+x exec  wlogout --protocol layer-shell -b 5 -T 400 -B 400
 
 # -- rofi --
 bindsym $mod+d exec rofi -show drun
 bindsym $mod+Control+c exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
-bindsym $mod+x exec  wlogout --protocol layer-shell -b 5 -T 400 -B 400
 bindsym $mod+Control+b exec  ~/.local/bin/books
 bindsym $mod+Control+d exec ~/.local/bin/configs
 

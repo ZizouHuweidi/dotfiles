@@ -20,7 +20,7 @@
     "group/memory",
     "pulseaudio",
     "custom/sep",
-    "group/power",
+    "battery",
     "tray"
   ],
   "sway/workspaces": {
