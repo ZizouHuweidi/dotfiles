@@ -20,7 +20,7 @@
     "group/memory",
     "pulseaudio",
     "custom/sep",
-    "battery",
+    "group/power",
     "tray"
   ],
   "sway/workspaces": {
@@ -56,8 +56,17 @@
     "format": "{title} ",
     "format-paused": "{title} ",
     "ignored-players": [
-      "brave"
+      "vivaldi"
     ]
+  },
+  "custom/cmus": {
+    "format": "♪ {}",
+    //"max-length": 15,
+    "interval": 10,
+    "exec": "cmus-remote -C \"format_print '%a - %t'\"", // artist - title
+    "exec-if": "pgrep cmus",
+    "on-click": "cmus-remote -u", //toggle pause
+    "escape": true //handle markup entities
   },
   "idle_inhibitor": {
     "format": "{icon}",
@@ -79,10 +88,10 @@
     "tooltip": false
   },
   "memory": {
-    "format": "{}% "
+    "format": "{}% " //
   },
   "disk": {
-    "format": "<span foreground='#928374'></span>{percentage_free}% ",
+    "format": "<span foreground='#928374'></span>{percentage_free}%", // 
     "states": {
       "warning": 70,
       "critical": 90
@@ -155,7 +164,7 @@
     "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
     "on-click-middle": "pavucontrol"
   },
-  "custom/notification": {
+  "custom/swaync": {
     "tooltip": false,
     "format": "{} {icon}",
     "format-icons": {
@@ -170,6 +179,12 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
+  },
+  "custom/notification": {
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/dunst.sh",
+    "on-click": "dunstctl set-paused toggle",
+    "restart-interval": 1
   },
   "group/compute": {
     "orientation": "horizontal",

@@ -74,7 +74,7 @@ seat * {
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
-exec swaync
+exec dunst
 
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
@@ -115,7 +115,9 @@ bindsym $mod+Control+Return exec thunar
 bindsym $mod+Shift+e exec  code
 bindsym $mod+Shift+v exec  kitty -e nvim
 bindsym $mod+Shift+b exec  vivaldi
-bindsym $mod+Control+n exec swaync-client -t
+bindsym $mod+c exec dunstctl close-all
+bindsym $mod+control+n exec dunstctl history-pop
+bindsym $mod+control+t exec dunstctl set-paused toggle
 bindsym $mod+e exec  emote
 bindsym $mod+x exec  wlogout --protocol layer-shell -b 5 -T 400 -B 400
 
