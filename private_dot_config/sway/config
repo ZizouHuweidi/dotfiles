@@ -1,5 +1,5 @@
 # vi: foldmethod=marker foldlevel=0
-# ft = swayconfig
+# ft = sway
 include ~/.config/sway/themes/gruvbox.conf
 
 #Settings {{{
@@ -42,7 +42,7 @@ for_window [app_id=".*"] opacity 0.95
 # }}}
 
 # Output {{{
-output * bg ~/Wallpapers/gruvbox_samuraimummy.jpg fill
+output * bg ~/Wallpapers/athar.jpg fill
 output * scale 1.0
 # output * bg "#282828" solid_color
 # }}}
@@ -76,8 +76,7 @@ exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 exec dunst
 
-set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
-exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
+exec swayosd-server
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -110,7 +109,7 @@ bindgesture swipe:down workspace back_and_forth
 
 # -- Apps --
 
-bindsym $mod+Return exec kitty 
+bindsym $mod+Return exec kitty
 bindsym $mod+Control+Return exec thunar
 bindsym $mod+Shift+e exec  code
 bindsym $mod+Shift+v exec  kitty -e nvim
@@ -128,18 +127,27 @@ bindsym $mod+Control+b exec  ~/.local/bin/books
 bindsym $mod+Control+d exec ~/.local/bin/configs
 
 # -- Function keys --
-bindsym XF86MonBrightnessDown exec brightnessctl set 10%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
-bindsym XF86MonBrightnessUp exec brightnessctl set +10% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
-bindsym XF86AudioRaiseVolume exec pamixer -ui 5 && pamixer --get-volume > $WOBSOCK
-bindsym XF86AudioLowerVolume exec pamixer -ud 5 && pamixer --get-volume > $WOBSOCK
-bindsym XF86AudioMute exec pamixer --toggle-mute && ( [ "$(pamixer --get-mute)" = "true" ] && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK
-bindsym XF86AudioMicMute exec pamixer --default-source -t
+# Volume raise with custom value
+bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume 15
+# Volume lower with custom value
+bindsym XF86AudioLowerVolume exec swayosd-client --output-volume -15
+
+# Sink volume toggle mute
+bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+# Source volume toggle mute
+bindsym XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
+
+# Brightness raise
+bindsym XF86MonBrightnessUp exec swayosd-client --brightness raise
+# Brightness lower
+bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
+
+# # Capslock (If you don't want to use the backend)
+# bindsym --release Caps_Lock exec swayosd-client --caps-lock
 
 bindsym $mod+XF86AudioRaiseVolume 			exec "playerctl next"
 bindsym $mod+XF86AudioLowerVolume 			exec "playerctl previous"
 bindsym $mod+XF86AudioMute 			exec "playerctl play-pause"
-
-
 
 # -- Screenshots --
 # Screenshot whole screen
@@ -178,6 +186,9 @@ for_window [con_mark="SCRATCHPAD_lf"] border pixel 5
 
 bindsym $mod+n exec ~/.config/sway/bin/sway-scratchpad --command "obsidian" --mark notes
 for_window [con_mark="SCRATCHPAD_notes"] border pixel 5
+
+bindsym $mod+Shift+a exec ~/.config/sway/bin/sway-scratchpad --command "blanket" --mark sound --width 50 --height 50
+for_window [con_mark="SCRATCHPAD_sound"] border pixel 5
 
 # }}}
 

@@ -5,6 +5,7 @@
 /home/zizou/Music/Anasheed/farsh-alturab.mp3
 /home/zizou/Music/Anasheed/fatat-alkhair.mp3
 /home/zizou/Music/Anasheed/habat-kalree7.mp3
+/home/zizou/Music/Anasheed/ilahi.mp3
 /home/zizou/Music/Anasheed/laysa-algharib.mp3
 /home/zizou/Music/Anasheed/no-sorrow-for-the-dunya.mp3
 /home/zizou/Music/Anasheed/qum-wa-anka-alrukadah.mp3
@@ -27,7 +28,6 @@
 /home/zizou/Music/Anasheed/واثباً نحو مماتي.mp3
 /home/zizou/Music/Anasheed/يا جنود الله.mp3
 /home/zizou/Music/notification_sound/Circles-52dfb77e-0cce-461d-a329-534f2705e4d6.mp3
-/home/zizou/Music/notification_sound/Iphone_Notification-53dda17b-f425-37c9-b632-b6ed7c8ac824.mp3
 /home/zizou/Music/Anasheed/amta-qad-la7a-fajr.mp3
 /home/zizou/Music/Anasheed/اقول لها الا يا روح روحي.mp3
 /home/zizou/Music/Anasheed/ثائر من تورابورا.mp3

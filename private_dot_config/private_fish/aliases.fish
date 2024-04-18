@@ -1,135 +1,3 @@
-# vi: foldmethod=marker foldlevel=0
-
-#ohmyzsh {{{
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="pmcgee"
-
-# ZSH_THEME_RANDOM_CANDIDATES=("awesomepanda" "juanghurtado" "zhann" "pmcgee" "cloud" "fwalch" "murilasso" "refined" "daveverwer")
-
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(colored-man-pages golang archlinux vi-mode docker)
-# zsh-completions fzf-tab pj tmux docker git 
-
-source $ZSH/oh-my-zsh.sh
-
-# }}}
-
-#sources {{{
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/nvm/init-nvm.sh
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-
-# }}}
-
-#paths {{{
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-if [ -d "$HOME/.bin" ] ;
-  then PATH="$HOME/.bin:$PATH"
-fi
-
-if [ -d "$HOME/.local/bin" ] ;
-  then PATH="$HOME/.local/bin:$PATH"
-fi
-
-# }}}
-
-#functions {{{
-
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *.deb)       ar x $1      ;;
-      *.tar.xz)    tar xf $1    ;;
-      *.tar.zst)   tar xf $1    ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
-
-# }}}
-
-#options {{{
-
-# some useful options (man zshoptions)
-setopt autocd extendedglob nomatch menucomplete
-setopt interactive_comments
-stty stop undef		# Disable ctrl-s to freeze terminal.
-zle_highlight=('paste:none')
-#share commands between terminal instances or not
-setopt SHARE_HISTORY
-# beeping is annoying
-unsetopt BEEP
-
-
-# completions
-autoload -Uz compinit
-compinit
-zstyle ':completion:*' menu select
-# zstyle ':completion::complete:lsof:*' menu yes select
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zmodload zsh/complist
-_comp_options+=(globdots)		# Include hidden files.
-
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-
-# Colors
-autoload -Uz colors && colors
-
-#}}}
-
-#exports {{{
-# History in cache directory:
-HISTSIZE=10000000
-SAVEHIST=10000000
-HISTFILE=~/.zsh_history
-#export PATH="$HOME/.local/bin":$PATH
-#export MANPAGER='nvim +Man!'
-#export MANWIDTH=999
-export GOPATH=$HOME/.local/share/go
-export PATH=$HOME/.local/share/go/bin:$PATH
-export PATH=$HOME/.cargo/bin/:$PATH
-# export PATH=$HOME/go/bin:$PATH
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-source "$HOME/.rye/env"
-# bun completions
-[ -s "/home/zizou/.bun/_bun" ] && source "/home/zizou/.bun/_bun"
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-#export PATH="$PATH:./node_modules/.bin"
-# eval "`pip completion --zsh`"
-# }}}
-
-#aliases {{{
-export EDITOR='nvim'
-
-#personal aliases
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
@@ -140,9 +8,7 @@ alias visudo="sudo -E -s nvim"
 alias ports="sudo netstat -tulpn | grep LISTEN"
 alias cat="bat"
 alias py="python"
-
-
-
+alias k="kubectl"
 
 #vim files shortcuts
 alias npacman="sudo $EDITOR /etc/pacman.conf"
@@ -167,15 +33,14 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 # Verbosity and settings that you pretty much just always are going to want.
-alias \
-	cp="cp -iv" \
-	mv="mv -iv" \
-	rm="rm -vI" \
-	bc="bc -ql" \
-	mkd="mkdir -pv" \
-	yt="yt-dlp --embed-metadata -i" \
-	yta="yt -x -f bestaudio/best" \
-	ffmpeg="ffmpeg -hide_banner"
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -vI"
+alias bc="bc -ql"
+alias mkd="mkdir -pv"
+alias yt="yt-dlp --embed-metadata -i"
+alias yta="yt -x -f bestaudio/best"
+alias ffmpeg="ffmpeg -hide_banner"
 
 # git
 alias addup='git add -u'
@@ -197,7 +62,7 @@ alias gt="nvim ~/.gittoken"
 # alias ll='ls -la'
 # alias l='ls'
 # alias l.="ls -A | egrep '^\.'"
- 
+
 # Changing "ls" to "exa"
 # alias ls='exa --color=always  --group-directories-first'
 # alias la='exa -a --color=always  --group-directories-first'
@@ -350,45 +215,3 @@ alias personal='cp -Rf /personal/* ~'
 
 # the terminal rickroll
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
-
-# }}}
-
-#Settings {{{
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
-
-# Key-bindings
-# bindkey -s '^e' 'nvim $(fzf)^M'
-bindkey -s '^f' 'lf^M'
-bindkey -s '^h' 'htop^M'
-bindkey -s '^n' 'nvim .^M'
-bindkey -s '^v' 'nvim\n'
-bindkey -s '^g' 'lazygit\n'
-#bindkey -s '^f' 'zi^M'
-# bindkey -s '^z' 'zi^M'
-#bindkey '^[[P' delete-char
-#bindkey "^p" up-line-or-beginning-search # Up
-#bindkey "^n" down-line-or-beginning-search # Down
-#bindkey "^k" up-line-or-beginning-search # Up
-#bindkey "^j" down-line-or-beginning-search # Down
-#bindkey -r "^u"
-#bindkey -r "^d"
-
-
-# FZF 
-# export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
-export FZF_DEFAULT_COMMAND='find .'
-# [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-# [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-compinit
-
-# Edit line in vim with ctrl-e:
-# autoload edit-command-line; zle -N edit-command-line
-# bindkey '^e' edit-command-line
-# }}}
-
-eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
-

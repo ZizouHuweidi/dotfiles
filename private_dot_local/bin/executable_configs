@@ -13,7 +13,7 @@ declare -a options=(
 	"kitty - $HOME/.config/kitty/kitty.conf"
 	"lf - $HOME/.config/lf/lfrc"
 	"rofi - $HOME/.config/rofi/config.rasi"
-	"zsh - $HOME/.zshrc"
+	"fish - $HOME/.config/fish/config.fish"
   "cv - $HOME/Documents/cv/main.tex"
   "configs - $HOME/.local/bin/configs"
 	"books - $HOME/.local/bin/books"
