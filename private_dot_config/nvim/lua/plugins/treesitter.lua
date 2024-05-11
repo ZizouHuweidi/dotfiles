@@ -15,6 +15,7 @@ return {
         "cpp",
         "zig",
         "java",
+        "c_sharp",
         "templ",
       },
     },

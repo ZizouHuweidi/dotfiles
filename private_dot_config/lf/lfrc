@@ -2,7 +2,7 @@
 # vim: ft=config
 
 # settings {{{
-set shell zsh
+set shell fish
 set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
@@ -20,7 +20,6 @@ set cleaner ~/.config/lf/lf_kitty_clean
 # set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
 # set autoquit on
 # }}}
-
 
 # keybinds {{{
 # execute file

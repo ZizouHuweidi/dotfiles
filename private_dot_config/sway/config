@@ -75,6 +75,7 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 exec dunst
+exec mpris-proxy
 
 exec swayosd-server
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
@@ -114,6 +115,7 @@ bindsym $mod+Control+Return exec thunar
 bindsym $mod+Shift+e exec  code
 bindsym $mod+Shift+v exec  kitty -e nvim
 bindsym $mod+Shift+b exec  vivaldi
+bindsym $mod+Shift+n exec  obsidian
 bindsym $mod+c exec dunstctl close-all
 bindsym $mod+control+n exec dunstctl history-pop
 bindsym $mod+control+t exec dunstctl set-paused toggle
@@ -125,6 +127,27 @@ bindsym $mod+d exec rofi -show drun
 bindsym $mod+Control+c exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
 bindsym $mod+Control+b exec  ~/.local/bin/books
 bindsym $mod+Control+d exec ~/.local/bin/configs
+bindsym $mod+Control+p exec ~/.local/bin/wl-present mirror
+
+
+# example of a key chord
+
+# mode "present" {
+#     # command starts mirroring
+#     bindsym m mode "default"; exec wl-present mirror
+#     # these commands modify an already running mirroring window
+#     bindsym o mode "default"; exec wl-present set-output
+#     bindsym r mode "default"; exec wl-present set-region
+#     bindsym Shift+r mode "default"; exec wl-present unset-region
+#     bindsym s mode "default"; exec wl-present set-scaling
+#     bindsym f mode "default"; exec wl-present toggle-freeze
+#     bindsym c mode "default"; exec wl-present custom
+#
+#     # return to default mode
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+# }
+# bindsym $mod+p mode "present"
 
 # -- Function keys --
 # Volume raise with custom value
@@ -184,8 +207,8 @@ for_window [con_mark="SCRATCHPAD_music"] border pixel 5
 bindsym $mod+Shift+f exec ~/.config/sway/bin/sway-scratchpad --command "kitty lf" --mark lf --width 75 --height 75
 for_window [con_mark="SCRATCHPAD_lf"] border pixel 5
 
-bindsym $mod+n exec ~/.config/sway/bin/sway-scratchpad --command "obsidian" --mark notes
-for_window [con_mark="SCRATCHPAD_notes"] border pixel 5
+# bindsym $mod+n exec ~/.config/sway/bin/sway-scratchpad --command "obsidian" --mark notes
+# for_window [con_mark="SCRATCHPAD_notes"] border pixel 5
 
 bindsym $mod+Shift+a exec ~/.config/sway/bin/sway-scratchpad --command "blanket" --mark sound --width 50 --height 50
 for_window [con_mark="SCRATCHPAD_sound"] border pixel 5

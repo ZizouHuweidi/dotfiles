@@ -9,6 +9,7 @@ alias ports="sudo netstat -tulpn | grep LISTEN"
 alias cat="bat"
 alias py="python"
 alias k="kubectl"
+alias mvnc="mvn archetype:generate"
 
 #vim files shortcuts
 alias npacman="sudo $EDITOR /etc/pacman.conf"

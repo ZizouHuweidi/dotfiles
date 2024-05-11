@@ -96,11 +96,8 @@ install_packages() {
 		## ts
 		yay --needed --noconfirm -S nvm npm deno
 
-    ## java
-    sudo pacman --needed --noconfirm -S jdk-openjdk maven gradle
-
-    ## rs
-    sudo pacman --needed --noconfirm -S rustup
+    ## zig/c
+    sudo pacman --needed --noconfirm -S zig
 
 		## virtual machines
 		# sudo pacman --needed --noconfirm -S virt-manager
