@@ -48,7 +48,7 @@ install_packages() {
 	# yay --needed --noconfirm -S swayhide
 
 	# wayland
-	sudo pacman --needed --noconfirm -S light slurp grim rofi swappy xorg-xwayland polkit-gnome
+	sudo pacman --needed --noconfirm -S light slurp grim rofi-wayland swappy xorg-xwayland polkit-gnome
 	yay --needed --noconfirm -S dunst cliphist nwg-look wlogout emote wdisplays wl-clipboard wf-recorder wob
 	sudo pacman --needed --noconfirm -S tesseract-data-eng wl-mirror xwaylandvideobridge 
 

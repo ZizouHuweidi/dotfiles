@@ -13,7 +13,7 @@ fish_vi_key_bindings
 
 set -x EDITOR nvim
 set -x TERMINAL kitty
-set -x BROWSER vivaldi
+set -x BROWSER brave
 
 set -x XDG_CONFIG_HOME ~/.config
 set -x XDG_DATA_HOME ~/.local/share

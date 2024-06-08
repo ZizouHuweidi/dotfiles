@@ -17,7 +17,7 @@
   "modules-right": [
     "cpu",
     "temperature",
-    "group/memory",
+    "memory",
     "pulseaudio",
     "custom/sep",
     "group/power",
@@ -91,7 +91,7 @@
     "format": "{}% " //
   },
   "disk": {
-    "format": "<span foreground='#928374'></span>{percentage_free}%", // 
+    "format": "<span foreground='#928374'></span>{percentage_free}% ",
     "states": {
       "warning": 70,
       "critical": 90

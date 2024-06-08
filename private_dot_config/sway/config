@@ -111,10 +111,10 @@ bindgesture swipe:down workspace back_and_forth
 # -- Apps --
 
 bindsym $mod+Return exec kitty
-bindsym $mod+Control+Return exec thunar
+bindsym $mod+Control+Return exec nautilus
 bindsym $mod+Shift+e exec  code
 bindsym $mod+Shift+v exec  kitty -e nvim
-bindsym $mod+Shift+b exec  vivaldi
+bindsym $mod+Shift+b exec  brave
 bindsym $mod+Shift+n exec  obsidian
 bindsym $mod+c exec dunstctl close-all
 bindsym $mod+control+n exec dunstctl history-pop
@@ -202,6 +202,7 @@ bindsym $mod+Shift+s exec ~/.config/sway/bin/sway-scratchpad --command "pavucont
 for_window [con_mark="SCRATCHPAD_sound"] border pixel 5
 
 bindsym $mod+m exec ~/.config/sway/bin/sway-scratchpad --command "kitty cmus" --mark music --width 50 --height 50
+# bindsym $mod+m exec ~/.config/sway/bin/sway-scratchpad --command "spotify" --mark music --width 85 --height 85
 for_window [con_mark="SCRATCHPAD_music"] border pixel 5
 
 bindsym $mod+Shift+f exec ~/.config/sway/bin/sway-scratchpad --command "kitty lf" --mark lf --width 75 --height 75
@@ -404,10 +405,10 @@ for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
 # Inhibit idle
 for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [app_id="brave-browser"] inhibit_idle fullscreen
-for_window [class="Vivaldi-stable"] inhibit_idle fullscreen
+for_window [class="brave-browser"] inhibit_idle fullscreen
 
 # workspace rules
-assign [class="Vivaldi-stable"] 1
+assign [class="brave-browser"] 1
 assign [app_id="obsidian"] 3
 # }}}
 
