@@ -1,9 +1,11 @@
 {
   "extras": [
+    "lazyvim.plugins.extras.lang.angular",
+    "lazyvim.plugins.extras.lang.clangd",
     "lazyvim.plugins.extras.util.dot"
   ],
   "news": {
-    "NEWS.md": "5950"
+    "NEWS.md": "6077"
   },
   "version": 6
 }

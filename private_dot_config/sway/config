@@ -112,10 +112,9 @@ bindgesture swipe:down workspace back_and_forth
 
 bindsym $mod+Return exec kitty
 bindsym $mod+Control+Return exec nautilus
-bindsym $mod+Shift+e exec  code
+bindsym $mod+Shift+z exec  zeditor
 bindsym $mod+Shift+v exec  kitty -e nvim
 bindsym $mod+Shift+b exec  brave
-bindsym $mod+Shift+n exec  obsidian
 bindsym $mod+c exec dunstctl close-all
 bindsym $mod+control+n exec dunstctl history-pop
 bindsym $mod+control+t exec dunstctl set-paused toggle
@@ -174,11 +173,11 @@ bindsym $mod+XF86AudioMute 			exec "playerctl play-pause"
 
 # -- Screenshots --
 # Screenshot whole screen
-# bindsym Print exec grim -t png $HOME/Pictures/Screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-bindsym Print exec grim -g "$(slurp)" -t png - | swappy -f -
+bindsym Print exec grim -t png $HOME/Pictures/Screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 
 # Screenshot region of screen
-bindsym $mod+Print exec slurp | grim -t png -g - $HOME/Pictures/Screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+bindsym $mod+Print exec grim -g "$(slurp)" -t png - | swappy -f -
+# bindsym $mod+Print exec slurp | grim -t png -g - $HOME/Pictures/Screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 
 # Save screenshot to clipboard
 bindsym $alt+Print exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
@@ -202,14 +201,13 @@ bindsym $mod+Shift+s exec ~/.config/sway/bin/sway-scratchpad --command "pavucont
 for_window [con_mark="SCRATCHPAD_sound"] border pixel 5
 
 bindsym $mod+m exec ~/.config/sway/bin/sway-scratchpad --command "kitty cmus" --mark music --width 50 --height 50
-# bindsym $mod+m exec ~/.config/sway/bin/sway-scratchpad --command "spotify" --mark music --width 85 --height 85
 for_window [con_mark="SCRATCHPAD_music"] border pixel 5
 
 bindsym $mod+Shift+f exec ~/.config/sway/bin/sway-scratchpad --command "kitty lf" --mark lf --width 75 --height 75
 for_window [con_mark="SCRATCHPAD_lf"] border pixel 5
 
-# bindsym $mod+n exec ~/.config/sway/bin/sway-scratchpad --command "obsidian" --mark notes
-# for_window [con_mark="SCRATCHPAD_notes"] border pixel 5
+bindsym $mod+n exec ~/.config/sway/bin/sway-scratchpad --command "obsidian" --mark notes
+for_window [con_mark="SCRATCHPAD_notes"] border pixel 5
 
 bindsym $mod+Shift+a exec ~/.config/sway/bin/sway-scratchpad --command "blanket" --mark sound --width 50 --height 50
 for_window [con_mark="SCRATCHPAD_sound"] border pixel 5
