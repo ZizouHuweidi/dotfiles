@@ -6,22 +6,25 @@
 # GitLab: https://www.gitlab.com/dwt1/dmscripts
 # Contributors: Derek Taylor
 
-READER="kitty -e swayhide zathura"
+READER="kitty -e zathura"
 # READER="evince"
 
 # An array of options to choose.
 # You can edit this list to add/remove config files.
 declare -a options=(
-	## Deen
-	"The Sealed Nectar - $HOME/Documents/books/deen/raheeq_almakhtoom.pdf"
-	"Al Nawawi 40 Hadith - $HOME/Documents/books/deen/alnawawiya_40.pdf"
-	"Al Ghazali - $HOME/Documents/books/deen/Al-Ghazalis_Philosophical_Theology.pdf"
-
-	## Programming
-	"Designing Data Intensive Application - $HOME/Documents/books/tech/distributed/ddia.pdf"
-	"Database Internals - $HOME/Documents/books/tech/databases/database_internals.pdf"
-	"Accelerate - $HOME/Documents/books/tech/devops/accelerate-the-science-of-lean-software-and-devops.epub"
+	"The Holy Quran - $HOME/Documents/books/deen/Holy_Quran_Full.pdf"
+	"The Sealed Nectar - $HOME/Documents/books/deen/English_ArRaheeq_AlMakhtum_THE_SEALED_NECTAR.pdf"
+	"Al Nawawi 40 Hadith - $HOME/Documents/books/deen/al-nawawi.pdf"
+	"Al Ghazali - $HOME/Documents/books/deen/Al-Ghazalis_Philosophical_Theology_by_Frank_Griffel.pdf"
+	"Intro to Algos - $HOME/Documents/books/tech/programming/dsa/intro-to-algorithms.pdf"
+	"Designing Data Intensive Application - $HOME/Documents/books/tech/backend/distributed/ddia.pdf"
+	"Distributed Services With Go - $HOME/Documents/books/tech/backend/distributed/distributed-services-with-go.pdf"
+	"Cloud Native Programming with Go - $HOME/Documents/books/tech/backend/distributed/cloud-native-programming-with-golang.epub"
 	"Writing an interpreter in Go - $HOME/Documents/books/tech/compilers/writing-an-interpreter-in-go.epub"
+	"Writing a compiler in Go - $HOME/Documents/books/tech/compilers/writing-a-compiler-in-go.pdf"
+	"The Pragmatic Programmer - $HOME/Documents/books/tech/programming/the-pragmatic-programmer.pdf"
+	"Mastering Kubernetes - $HOME/Documents/books/tech/devops/kubernetes/mastering-kubernetes.pdf"
+	"Networking and Kubernetes - $HOME/Documents/books/tech/devops/kubernetes/networking-and-kubernetes.pdf"
 	# "quit"
 )
 

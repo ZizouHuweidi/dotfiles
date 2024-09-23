@@ -13,8 +13,6 @@ return {
         "regex",
         "c",
         "cpp",
-        "zig",
-        "java",
         "templ",
       },
     },

@@ -7,9 +7,8 @@ yay --needed --noconfirm -S brave-bin visual-studio-code-bin
 
 sudo pacman --needed --noconfirm -S gimp obsidian
 sudo pacman --needed --noconfirm -S go hugo ollama protobuf syncthing rsync docker docker-compose
-sudo pacman --needed --noconfirm -S python-pip python-pipx
+sudo pacman --needed --noconfirm -S python-pip python-pipx python-poetry rye
 yay --needed --noconfirm -S nvm npm php composer
-sudo pacman --needed --noconfirm -S rustup zig
 sudo pacman --needed --noconfirm -S net-tools ntfs-3g ventoy-bin virt-manager
 
 ## fonts

@@ -1,6 +1,6 @@
 configuration {
     show-icons: true;
-    font: "JetBrains Mono 8";
+    font: "JetBrains Mono 10";
     icon-theme: "Papirus-Dark";
     line-margin: 10;
 
@@ -15,8 +15,4 @@ configuration {
 }
 
 @theme "gruvbox"
-
-listview {
-  columns: 2;
-}
 
