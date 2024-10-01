@@ -1,7 +1,7 @@
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
-alias za="swayhide zathura"
+alias za="zathura"
 alias pacsearch="yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro sudo yay -S"
 alias pacdel="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
 alias visudo="sudo -E -s nvim"
@@ -9,7 +9,6 @@ alias ports="sudo netstat -tulpn | grep LISTEN"
 alias cat="bat"
 alias py="python"
 alias k="kubectl"
-alias mvnc="mvn archetype:generate"
 
 #vim files shortcuts
 alias npacman="sudo $EDITOR /etc/pacman.conf"

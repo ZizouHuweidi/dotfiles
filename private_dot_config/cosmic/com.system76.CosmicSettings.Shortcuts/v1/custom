@@ -1,0 +1,43 @@
+{
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "XF86AudioLowerVolume",
+    ): System(PlayPrev),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "Return",
+        description: Some("kitty"),
+    ): Spawn("kitty"),
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "d",
+        description: Some("configs"),
+    ): Spawn("~/.local/bin/configs"),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "XF86AudioRaiseVolume",
+    ): System(PlayNext),
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "b",
+        description: Some("books"),
+    ): Spawn("~/.local/bin/books"),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "XF86AudioMute",
+    ): System(PlayPause),
+}
