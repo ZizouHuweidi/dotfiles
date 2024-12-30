@@ -6,7 +6,7 @@
 # GitLab: https://www.gitlab.com/dwt1/dmscripts
 # Contributors: Derek Taylor
 
-READER="kitty -e zathura"
+READER="ghostty -e zathura"
 # READER="evince"
 
 # An array of options to choose.
@@ -16,15 +16,13 @@ declare -a options=(
 	"The Sealed Nectar - $HOME/Documents/books/deen/English_ArRaheeq_AlMakhtum_THE_SEALED_NECTAR.pdf"
 	"Al Nawawi 40 Hadith - $HOME/Documents/books/deen/al-nawawi.pdf"
 	"Al Ghazali - $HOME/Documents/books/deen/Al-Ghazalis_Philosophical_Theology_by_Frank_Griffel.pdf"
-	"Intro to Algos - $HOME/Documents/books/tech/programming/dsa/intro-to-algorithms.pdf"
 	"Designing Data Intensive Application - $HOME/Documents/books/tech/backend/distributed/ddia.pdf"
-	"Distributed Services With Go - $HOME/Documents/books/tech/backend/distributed/distributed-services-with-go.pdf"
-	"Cloud Native Programming with Go - $HOME/Documents/books/tech/backend/distributed/cloud-native-programming-with-golang.epub"
+	"The Pragmatic Programmer - $HOME/Documents/books/tech/programming/the-pragmatic-programmer.pdf"
+	"System Design Interview - $HOME/Documents/books/tech/backend/system-design/system-design-interview.pdf"
+	"Grokking The System Design Interview - $HOME/Documents/books/tech/backend/system-design/Grokking-the-system-design-interview.pdf"
 	"Writing an interpreter in Go - $HOME/Documents/books/tech/compilers/writing-an-interpreter-in-go.epub"
 	"Writing a compiler in Go - $HOME/Documents/books/tech/compilers/writing-a-compiler-in-go.pdf"
-	"The Pragmatic Programmer - $HOME/Documents/books/tech/programming/the-pragmatic-programmer.pdf"
-	"Mastering Kubernetes - $HOME/Documents/books/tech/devops/kubernetes/mastering-kubernetes.pdf"
-	"Networking and Kubernetes - $HOME/Documents/books/tech/devops/kubernetes/networking-and-kubernetes.pdf"
+	"Intro to Algos - $HOME/Documents/books/tech/programming/dsa/intro-to-algorithms.pdf"
 	# "quit"
 )
 

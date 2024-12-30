@@ -3,12 +3,12 @@ sudo pacman --needed --noconfirm -S chezmoi lm_sensors lshw gdu htop gparted upo
 sudo pacman --needed --noconfirm -S zathura zathura-pdf-mupdf neovim neovide wl-clipboard
 sudo pacman --needed --noconfirm -S lf transmission-gtk transmission-cli yt-dlp fastfetch android-file-transfer cmus
 sudo pacman --needed --noconfirm -S kitty python-pillow bat fish grc fzf ripgrep fd starship tldr zoxide xwaylandvideobridge
-yay --needed --noconfirm -S brave-bin visual-studio-code-bin
+yay --needed --noconfirm -S brave-bin visual-studio-code-bin zed
 
 sudo pacman --needed --noconfirm -S gimp obsidian
 sudo pacman --needed --noconfirm -S go hugo ollama protobuf syncthing rsync docker docker-compose
-sudo pacman --needed --noconfirm -S python-pip python-pipx python-poetry rye
-yay --needed --noconfirm -S nvm npm php composer
+sudo pacman --needed --noconfirm -S python-pip python-pipx python-poetry rye python-ipykernel
+yay --needed --noconfirm -S nvm npm
 sudo pacman --needed --noconfirm -S net-tools ntfs-3g ventoy-bin virt-manager
 
 ## fonts

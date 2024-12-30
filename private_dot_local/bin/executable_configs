@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # READER="kitty -e zathura"
-EDITOR="kitty -e nvim"
+EDITOR="ghostty -e nvim"
 
 # An array of options to choose.
 # You can edit this list to add/remove config files.
@@ -12,8 +12,10 @@ declare -a options=(
 	"configs - $HOME/.local/bin/configs"
 	"setup - $HOME/setup/packages.sh"
 	"nvim - $HOME/.config/nvim/lua/config/lazy.lua"
+	"sway - $HOME/.config/sway/config"
+	"waybar - $HOME/.config/waybar/config.jsonc"
 	"fish - $HOME/.config/fish/config.fish"
-	"kitty - $HOME/.config/kitty/kitty.conf"
+	"ghostty - $HOME/.config/ghostty/config"
 	# "quit"
 )
 
