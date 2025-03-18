@@ -55,10 +55,6 @@ window#waybar.hidden {
   color: #a89984;
 }
 
-#custom-updates {
-  color: #689d68;
-}
-
 #workspaces button {
   padding: 0 5px;
   color: #ebdbb2;
@@ -72,7 +68,7 @@ window#waybar.hidden {
   border-radius: 5px;
 }
 
-#workspaces button.focused {
+#workspaces button.active {
   background-color: #458588;
   border-bottom: none;
   border-radius: 5px;
@@ -80,6 +76,10 @@ window#waybar.hidden {
 
 #workspaces button.urgent {
   background-color: #cc241d;
+}
+
+#custom-updates {
+  color: #689d68;
 }
 
 #cpu {

@@ -12,8 +12,8 @@ source ~/.config/fish/functions.fish
 fish_vi_key_bindings
 
 set -x EDITOR nvim
-set -x TERMINAL kitty
-set -x BROWSER brave
+set -x TERMINAL ghostty
+set -x BROWSER zen-browser
 
 set -x XDG_CONFIG_HOME ~/.config
 set -x XDG_DATA_HOME ~/.local/share
@@ -41,7 +41,6 @@ bind -M insert \cf lf
 bind -M insert \cn 'nvim .'
 bind -M insert \cv nvim
 bind -M insert \cg lazygit
-
 
 zoxide init fish | source
 starship init fish | source
