@@ -6,6 +6,15 @@ function fish_greeting
     # fastfetch
 end
 
+function y
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    yazi $argv --cwd-file="$tmp"
+    if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        builtin cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
+end
+
 source ~/.config/fish/aliases.fish
 source ~/.config/fish/functions.fish
 
@@ -28,7 +37,7 @@ fish_add_path -m ~/.bin
 fish_add_path -m ~/.local/bin
 set -x GOPATH $HOME/.local/share/go
 fish_add_path -m $GOPATH/bin
-# fish_add_path -m $HOME/.cargo/bin
+fish_add_path -m $HOME/.cargo/bin
 set -x LANGUAGES_NODE_VERSION 'v21.7.3'
 fish_add_path $HOME/.local/share/nvm/v$LANGUAGES_NODE_VERSION/bin
 set -x BUN_INSTALL $HOME/.bun
