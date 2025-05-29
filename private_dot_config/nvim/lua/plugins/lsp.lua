@@ -17,6 +17,9 @@ return {
           "goimports",
           "gofumpt",
         },
+        php = {
+          "php_cs_fixer",
+        },
       },
     },
   },
