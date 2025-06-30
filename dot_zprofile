@@ -1,14 +1,16 @@
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 # Default programs:
-# export EDITOR="nvim"
-# export TERMINAL="ghostty"
-# export BROWSER="zen-browser"
-#
-# export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
+export EDITOR="nvim"
+export TERMINAL="ghostty"
+export BROWSER="zen-browser"
+
+export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
 
 # XDG Paths
-# export XDG_CONFIG_HOME=$HOME/.config
-# export XDG_CACHE_HOME=$HOME/.cache
-# export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+
+
+# Added by Toolbox App
+export PATH="$PATH:/home/zizou/.local/share/JetBrains/Toolbox/scripts"
