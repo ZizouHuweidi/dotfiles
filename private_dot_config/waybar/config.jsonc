@@ -80,11 +80,11 @@
     "format-alt": "{:%A, %B %d, %Y} ",
   },
   "cpu": {
-    "format": "{usage}% ",
+    "format": "{usage}%  ",
     "tooltip": false,
   },
   "memory": {
-    "format": "{}% ", //
+    "format": "{}% ",
   },
   "disk": {
     "format": "<span foreground='#928374'></span>{percentage_free}% ",
@@ -108,21 +108,15 @@
   },
   "battery": {
     "states": {
-      "warning": 40,
+      "warning": 30,
       "critical": 20,
     },
     "format": "{capacity}% {icon}",
     "tooltip-format": "{timeTo}, {capacity}%",
-    "format-charging": "{capacity}% ", //
+    "format-charging": "{capacity}% ", //
     "format-plugged": " ",
     "format-alt": "{time} {icon}",
-    "format-icons": [
-      "",
-      //"",
-      "",
-      //"",
-      "",
-    ],
+    "format-icons": ["", "", "", "", ""],
   },
   "upower": {
     // "format": "{percentage} ",
@@ -236,7 +230,7 @@
   },
 
   "power-profiles-daemon": {
-    "format": "{icon}",
+    "format": " {icon} ",
     "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
     "tooltip": true,
     "format-icons": {

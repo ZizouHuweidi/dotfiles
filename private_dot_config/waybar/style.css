@@ -152,6 +152,10 @@ window#waybar.hidden {
   color: #98971a;
 }
 
+#power-profiles-daemon {
+  color: #83a598;
+}
+
 #battery.charging,
 #battery.plugged {
   background-color: #98971a;
