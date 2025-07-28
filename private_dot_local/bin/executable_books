@@ -12,18 +12,14 @@ READER="ghostty -e zathura"
 # An array of options to choose.
 # You can edit this list to add/remove config files.
 declare -a options=(
-	"The Holy Quran - $HOME/Documents/books/deen/Holy_Quran_Full.pdf"
-	"The Sealed Nectar - $HOME/Documents/books/deen/English_ArRaheeq_AlMakhtum_THE_SEALED_NECTAR.pdf"
-	"Al Nawawi 40 Hadith - $HOME/Documents/books/deen/al-nawawi.pdf"
-	"Al Ghazali - $HOME/Documents/books/deen/Al-Ghazalis_Philosophical_Theology_by_Frank_Griffel.pdf"
-	"Designing Data Intensive Application - $HOME/Documents/books/tech/backend/distributed/ddia.pdf"
-	"The Pragmatic Programmer - $HOME/Documents/books/tech/programming/the-pragmatic-programmer.pdf"
-	"System Design Interview - $HOME/Documents/books/tech/backend/system-design/system-design-interview.pdf"
-	"Grokking The System Design Interview - $HOME/Documents/books/tech/backend/system-design/Grokking-the-system-design-interview.pdf"
-	"Writing an interpreter in Go - $HOME/Documents/books/tech/compilers/writing-an-interpreter-in-go.epub"
-	"Writing a compiler in Go - $HOME/Documents/books/tech/compilers/writing-a-compiler-in-go.pdf"
-	"Intro to Algos - $HOME/Documents/books/tech/programming/dsa/intro-to-algorithms.pdf"
-	# "quit"
+  "The Holy Quran - $HOME/Documents/books/deen/Holy_Quran_Full.pdf"
+  "The Sealed Nectar - $HOME/Documents/books/deen/English_ArRaheeq_AlMakhtum_THE_SEALED_NECTAR.pdf"
+  "Al Nawawi 40 Hadith - $HOME/Documents/books/deen/al-nawawi.pdf"
+  "The Brothers of Karamazov - $HOME/Documents/books/general/the_brothers_karamazov.epub"
+  "Al Ghazali - $HOME/Documents/books/deen/Al-Ghazalis_Philosophical_Theology_by_Frank_Griffel.pdf"
+  "Designing Data Intensive Application - $HOME/Documents/books/tech/backend/distributed/ddia.pdf"
+  "Intro to Algos - $HOME/Documents/books/tech/programming/dsa/intro-to-algorithms.pdf"
+  # "quit"
 )
 
 # Piping the above array into dmenu.
@@ -32,14 +28,14 @@ choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i 20 -p 'Choose Book')
 
 # What to do when/if we choose 'quit'.
 if [[ "$choice" == "quit" ]]; then
-	echo "Program terminated." && exit 1
+  echo "Program terminated." && exit 1
 
 # What to do when/if we choose a file to edit.
 elif [ "$choice" ]; then
-	cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
-	$READER "$cfg"
+  cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
+  $READER "$cfg"
 
 # What to do if we just escape without choosing anything.
 else
-	echo "Program terminated." && exit 1
+  echo "Program terminated." && exit 1
 fi

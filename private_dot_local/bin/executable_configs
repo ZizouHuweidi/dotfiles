@@ -6,18 +6,16 @@ EDITOR="ghostty -e nvim"
 # An array of options to choose.
 # You can edit this list to add/remove config files.
 declare -a options=(
-	"website - $HOME/code/zizouhuweidi.github.io/"
-	"cv - $HOME/Documents/cv/main.tex"
-	"books - $HOME/.local/bin/books"
-	"configs - $HOME/.local/bin/configs"
-	"setup - $HOME/setup/packages.sh"
-	"nvim - $HOME/.config/nvim/lua/config/lazy.lua"
-	"sway - $HOME/.config/sway/config"
-	"uwsm - $HOME/.config/uwsm/env"
-	"waybar - $HOME/.config/waybar/config.jsonc"
-	"zsh - $HOME/.zshrc"
-	"ghostty - $HOME/.config/ghostty/config"
-	# "quit"
+  "website - $HOME/code/zizouhuweidi.github.io/"
+  "books - $HOME/.local/bin/books"
+  "configs - $HOME/.local/bin/configs"
+  "setup - $HOME/setup/packages.sh"
+  "nvim - $HOME/.config/nvim/lua/config/lazy.lua"
+  "niri - $HOME/.config/niri/config.kdl"
+  "waybar - $HOME/.config/waybar/config.jsonc"
+  "zsh - $HOME/.zshrc"
+  "ghostty - $HOME/.config/ghostty/config"
+  # "quit"
 )
 
 # Piping the above array into dmenu.
@@ -26,14 +24,14 @@ choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i 20 -p 'Edit Config')
 
 # What to do when/if we choose 'quit'.
 if [[ "$choice" == "quit" ]]; then
-	echo "Program terminated." && exit 1
+  echo "Program terminated." && exit 1
 
 # What to do when/if we choose a file to edit.
 elif [ "$choice" ]; then
-	cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
-	$EDITOR "$cfg"
+  cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
+  $EDITOR "$cfg"
 
 # What to do if we just escape without choosing anything.
 else
-	echo "Program terminated." && exit 1
+  echo "Program terminated." && exit 1
 fi
