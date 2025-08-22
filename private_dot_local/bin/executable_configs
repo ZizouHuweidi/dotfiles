@@ -11,7 +11,7 @@ declare -a options=(
   "configs - $HOME/.local/bin/configs"
   "setup - $HOME/setup/packages.sh"
   "nvim - $HOME/.config/nvim/lua/config/lazy.lua"
-  "niri - $HOME/.config/niri/config.kdl"
+  "sway - $HOME/.config/sway/config"
   "waybar - $HOME/.config/waybar/config.jsonc"
   "zsh - $HOME/.zshrc"
   "ghostty - $HOME/.config/ghostty/config"

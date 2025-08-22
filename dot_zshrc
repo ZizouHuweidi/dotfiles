@@ -138,6 +138,7 @@ HISTFILE=~/.zsh_history
 #export MANWIDTH=999
 export GOPATH=$HOME/.local/share/go
 export PATH=$HOME/.local/share/go/bin:$PATH
+export PATH=$HOME/.config/emacs/bin:$PATH
 export PATH="$PATH:/home/zizou/.dotnet/tools"
 export PATH=$HOME/.cargo/bin/:$PATH
 # export PATH=$HOME/go/bin:$PATH

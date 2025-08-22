@@ -72,8 +72,9 @@ seat * {
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
-exec dunst
+exec mako
 exec mpris-proxy
+exec emacs --daemon
 
 exec swayosd-server
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
@@ -110,14 +111,14 @@ bindgesture swipe:down workspace back_and_forth
 
 bindsym $mod+Return exec ghostty
 bindsym $mod+Control+Return exec nautilus
-bindsym $mod+Shift+z exec  zeditor
+bindsym $mod+Shift+e exec  emacsclient -c -a 'emacs'
 bindsym $mod+Shift+m exec  gnome-music
 bindsym $mod+Shift+v exec  ghostty -e nvim
-bindsym $mod+Shift+b exec  zen-browser
-bindsym $mod+Shift+n exec  obsidian
-bindsym $mod+c exec dunstctl close-all
-bindsym $mod+control+n exec dunstctl history-pop
-bindsym $mod+control+t exec dunstctl set-paused toggle
+bindsym $mod+Shift+b exec  google-chrome-stable
+bindsym $mod+Shift+n exec  flatpak run md.obsidian.Obsidian
+bindsym $mod+c exec makoctl dismiss --all
+bindsym $mod+control+n exec makoctl restore
+bindsym $mod+control+t exec makoctl mode -t do-not-disturb
 bindsym $mod+e exec  emote
 bindsym $mod+x exec  wlogout --protocol layer-shell -b 5 -T 400 -B 400
 
@@ -211,8 +212,8 @@ for_window [con_mark="SCRATCHPAD_sound"] border pixel 5
 # bindsym $mod+m exec ~/.config/sway/bin/sway-scratchpad --command "tauon" --mark music
 # for_window [con_mark="SCRATCHPAD_music"] border pixel 5
 
-bindsym $mod+Shift+f exec ~/.config/sway/bin/sway-scratchpad --command "ghostty -e yazi" --mark lf --width 75 --height 75
-for_window [con_mark="SCRATCHPAD_lf"] border pixel 5
+bindsym $mod+Shift+f exec ~/.config/sway/bin/sway-scratchpad --command "ghostty -e yazi" --mark yazi --width 75 --height 75
+for_window [con_mark="SCRATCHPAD_yazi"] border pixel 5
 
 # bindsym $mod+n exec ~/.config/sway/bin/sway-scratchpad --command "obsidian" --mark notes
 # for_window [con_mark="SCRATCHPAD_notes"] border pixel 5
