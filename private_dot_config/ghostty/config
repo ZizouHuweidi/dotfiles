@@ -1,8 +1,8 @@
-theme = GruvboxDark
+theme = Gruvbox Dark
 font-family = FiraCode Nerd Font Mono
 font-size = 14
 window-padding-x = 25
 window-padding-y = 25
-window-decoration = false
+window-decoration = true
 confirm-close-surface = false
-window-decoration = false
+window-decoration = true
