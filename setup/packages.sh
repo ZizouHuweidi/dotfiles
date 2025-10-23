@@ -1,6 +1,7 @@
 sudo pacman -Syy
+sudo pacman -S cosmic
 sudo pacman --needed --noconfirm -S chezmoi lm_sensors lshw gdu htop gparted upower tlp tlpui
-sudo pacman --needed --noconfirm -S zathura zathura-pdf-mupdf neovim neovide wl-clipboard
+sudo pacman --needed --noconfirm -S zathura zathura-pdf-mupdf neovim neovide
 sudo pacman --needed --noconfirm -S lf transmission-gtk transmission-cli yt-dlp fastfetch android-file-transfer cmus
 sudo pacman --needed --noconfirm -S ghostty python-pillow bat fish grc fzf ripgrep fd starship tldr zoxide xwaylandvideobridge
 yay --needed --noconfirm -S firefox visual-studio-code-bin zed

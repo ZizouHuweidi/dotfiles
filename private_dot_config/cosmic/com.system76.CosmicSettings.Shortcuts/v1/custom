@@ -1,0 +1,15 @@
+{
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "BackSpace",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "Return",
+        description: Some("ghostty"),
+    ): Spawn("ghostty"),
+}
