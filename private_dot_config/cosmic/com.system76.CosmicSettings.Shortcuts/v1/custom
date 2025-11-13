@@ -9,6 +9,12 @@
         modifiers: [
             Super,
         ],
+        key: "grave",
+    ): ToggleSticky,
+    (
+        modifiers: [
+            Super,
+        ],
         key: "Return",
         description: Some("ghostty"),
     ): Spawn("ghostty"),
