@@ -214,7 +214,7 @@ alias pull='git pull origin'
 alias push='git push origin'
 alias tag='git tag'
 alias newtag='git tag -a'
-alias gt="nvim ~/.gittoken"
+alias gt="nvim ~/Documents/.gittoken"
 
 # #list
 # alias ls='ls --color=auto'
