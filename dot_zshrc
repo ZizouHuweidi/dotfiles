@@ -163,7 +163,6 @@ alias cat="bat"
 alias py="python"
 alias k="kubectl"
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
-alias code='flatpak run com.visualstudio.code'
 
 
 
