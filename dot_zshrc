@@ -19,11 +19,9 @@ source $ZSH/oh-my-zsh.sh
 # }}}
 
 #sources {{{
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/nvm/init-nvm.sh
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/fzf/shell/key-bindings.zsh
 
 # }}}
 
@@ -161,10 +159,11 @@ alias pacsearch="yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro sudo
 alias pacdel="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
 alias visudo="sudo -E -s nvim"
 alias ports="sudo netstat -tulpn | grep LISTEN"
-#alias cat="bat"
+alias cat="bat"
 alias py="python"
 alias k="kubectl"
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+alias code='flatpak run com.visualstudio.code'
 
 
 

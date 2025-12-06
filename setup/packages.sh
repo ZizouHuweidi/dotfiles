@@ -1,4 +1,4 @@
-## Update for Fedora and GNOME. Move to Cosmic when stable
+## Update for Fedora and GNOME.
 
 sudo pacman -Syy
 sudo pacman --needed --noconfirm -S chezmoi lm_sensors lshw gdu htop gparted upower tlp tlpui
