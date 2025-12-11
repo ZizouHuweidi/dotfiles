@@ -136,7 +136,8 @@ HISTFILE=~/.zsh_history
 #export MANWIDTH=999
 export GOPATH=$HOME/.local/share/go
 export PATH=$HOME/.local/share/go/bin:$PATH
-# export PATH="$PATH:/home/zizou/.dotnet/tools"
+export PATH="$HOME/.dotnet/tools:$PATH"
+export PATH="$HOME/.aspire/bin:$PATH"
 # export PATH=$HOME/.cargo/bin/:$PATH
 # export PATH=$HOME/go/bin:$PATH
 [ -s "/home/zizou/.bun/_bun" ] && source "/home/zizou/.bun/_bun"
@@ -414,3 +415,4 @@ compinit
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
+
