@@ -2,7 +2,7 @@
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="ghostty"
-export BROWSER="zen-browser"
+export BROWSER="chrome-browser-stable"
 
 export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
 
@@ -10,3 +10,4 @@ export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
+export KUBECONFIG=$HOME/.kube/config
