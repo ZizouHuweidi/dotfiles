@@ -28,6 +28,17 @@ print_section() {
 setup_repositories() {
   print_section "Setting up repositories"
 
+  # Add RPM Fusion Free and Non-Free repositories
+  if ! rpm -q rpmfusion-free-release &>/dev/null; then
+    print_info "Adding RPM Fusion repositories..."
+    sudo dnf install -y \
+      "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" \
+      "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
+    print_success "RPM Fusion repositories added"
+  else
+    print_success "RPM Fusion repositories already configured"
+  fi
+
   # Add Terra repository
   if ! rpm -q terra-release &>/dev/null; then
     print_info "Adding Terra repository..."
@@ -98,6 +109,19 @@ install_dnf_packages() {
     yt-dlp
     fastfetch
     android-file-transfer
+    ffmpeg
+    gstreamer1-plugins-base
+    gstreamer1-plugins-good
+    gstreamer1-plugins-ugly
+    gstreamer1-plugins-bad-free
+    gstreamer1-plugins-bad-freeworld
+    gstreamer1-libav
+    ffmpeg-libs
+    libva
+    libva-utils
+    openh264
+    gstreamer1-plugin-openh264
+    mozilla-openh264
   )
 
   # Development tools
@@ -122,10 +146,25 @@ install_dnf_packages() {
     ntfs-3g
     zsh-autosuggestions
     zsh-syntax-highlighting
+    unzip
+    p7zip
+    p7zip-plugins
+    unrar
+    fuse-libs
+    intel-media-driver
+    libva-intel-driver
+    mesa-va-drivers
   )
 
   print_info "Updating package cache..."
   sudo dnf makecache
+
+  print_info "Upgrading core group..."
+  sudo dnf group upgrade -y core
+  sudo dnf4 group install -y core
+
+  print_info "Enabling Cisco OpenH264 repository..."
+  sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
 
   print_info "Installing packages..."
   sudo dnf install -y \
@@ -134,6 +173,12 @@ install_dnf_packages() {
     "${media_packages[@]}" \
     "${dev_packages[@]}" \
     "${sys_packages[@]}"
+
+  print_info "Installing multimedia codecs group..."
+  sudo dnf4 group install -y multimedia
+  sudo dnf swap -y 'ffmpeg-free' 'ffmpeg' --allowerasing
+  sudo dnf upgrade -y @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+  sudo dnf group install -y sound-and-video
 
   print_success "DNF packages installed"
 }
@@ -152,6 +197,7 @@ install_flatpaks() {
     "org.telegram.desktop"
     "com.calibre_ebook.calibre"
     "com.rtosta.zapzap"
+    "com.github.tchx84.Flatseal"
   )
 
   for app in "${flatpaks[@]}"; do
@@ -163,6 +209,13 @@ install_flatpaks() {
       print_success "$app already installed"
     fi
   done
+
+  # Enable theme support for Flatpaks
+  print_info "Enabling Flatpak theme support..."
+  sudo flatpak override --filesystem=xdg-config/gtk-4.0:ro
+  sudo flatpak override --filesystem=xdg-config/gtk-3.0:ro
+  sudo flatpak override --filesystem=$HOME/.themes
+  sudo flatpak override --filesystem=$HOME/.icons
 }
 
 # Enable services
@@ -172,6 +225,22 @@ enable_services() {
   print_info "Enabling Docker service..."
   sudo systemctl enable --now docker
   print_success "Docker service enabled"
+}
+
+# Update firmware
+update_firmware() {
+  print_section "Checking for firmware updates"
+
+  print_info "Refreshing firmware metadata..."
+  sudo fwupdmgr refresh --force || true
+
+  print_info "Checking for available firmware updates..."
+  sudo fwupdmgr get-updates || true
+
+  print_info "Applying firmware updates (if any)..."
+  sudo fwupdmgr update || true
+
+  print_success "Firmware update check completed"
 }
 
 main() {
@@ -184,11 +253,13 @@ main() {
   install_additional_tools
   install_flatpaks
   enable_services
+  update_firmware
 
   echo ""
   print_success "All packages installed successfully!"
   echo ""
   print_info "Note: You may need to log out and back in for some changes to take effect."
+  print_info "For OpenH264 in Firefox, enable the plugin in Firefox settings."
 }
 
 main
