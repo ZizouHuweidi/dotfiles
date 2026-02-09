@@ -40,20 +40,20 @@
       "8": "8",
       "9": "9",
       "10": "10",
-      "urgent": " ",
+      "urgent": "󰀦 ",
       // "focused": " ",
-      "default": " ",
+      "default": "󰝥 ",
     },
   },
   "sway/language": {
-    "format": "{short} ",
+    "format": "{short} 󰌌",
   },
   "custom/sep": {
     "format": " ◆ ",
   },
   "mpris": {
-    "format": "{title} ",
-    "format-paused": "{title} ",
+    "format": "{title} 󰐊",
+    "format-paused": "{title} 󰏤",
     "ignored-players": ["vivaldi"],
   },
   "custom/cmus": {
@@ -68,8 +68,8 @@
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-      "activated": "",
-      "deactivated": "",
+      "activated": "󰈈",
+      "deactivated": "󰈉",
     },
   },
   "tray": {
@@ -77,11 +77,11 @@
   },
   "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": "{:%H:%M} ",
-    "format-alt": "{:%A, %B %d, %Y} ",
+    "format": "{:%H:%M} 󰥔",
+    "format-alt": "{:%A, %B %d, %Y} 󰸗",
   },
   "cpu": {
-    "format": "{usage}%  ",
+    "format": "{usage}% 󰻠 ",
     "tooltip": false,
   },
   "memory": {
@@ -93,7 +93,7 @@
     }
   },
   "disk": {
-    "format": "<span foreground='#928374'></span>{percentage_free}% ",
+    "format": "<span foreground='#928374'></span>{percentage_free}% 󰋊",
     "states": {
       "warning": 70,
       "critical": 90,
@@ -101,8 +101,7 @@
   },
   "temperature": {
     "critical-threshold": 70,
-    "format": "{temperatureC}°C {icon}",
-    "format-icons": ["", "", ""],
+    "format": "{temperatureC}°C 󰔏",
     "thermal-zone": 5,
     "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
   },
@@ -119,10 +118,10 @@
     },
     "format": "{capacity}% {icon}",
     "tooltip-format": "{timeTo}, {capacity}%",
-    "format-charging": "{capacity}%  ", //
-    "format-plugged": " ",
+    "format-charging": "{capacity}% 󰂄 ",
+    "format-plugged": "󰚥 ",
     "format-alt": "{time} {icon}",
-    "format-icons": [" ", " ", " ", " ", " "],
+    "format-icons": ["󰁺 ", "󰁻 ", "󰁼 ", "󰁽 ", "󰁾 "],
   },
   "upower": {
     // "format": "{percentage} ",
@@ -131,18 +130,18 @@
   },
   "pulseaudio": {
     "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% {icon}",
-    "format-bluetooth-muted": "{volume}%   ",
-    "format-muted": "  ",
-    "format-source-muted": " ",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-bluetooth-muted": "{volume}% 󰖁 ",
+    "format-muted": "󰖁  ",
+    "format-source-muted": "󰍭 ",
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": " ",
-      "default": ["", "", ""],
+      "headphone": "󰋋",
+      "hands-free": "󰋎",
+      "headset": "󰋎",
+      "phone": "󰏲",
+      "portable": "󰏲",
+      "car": "󰄋 ",
+      "default": ["󰕿", "󰖀", "󰕾"],
     },
     "tooltip-format": "{desc}, {volume}%",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
@@ -153,10 +152,10 @@
     "tooltip": false,
     "format": " {} {icon} ",
     "format-icons": {
-      "notification": "<span foreground='red'><sup></sup></span>",
-      "none": "",
-      "dnd-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-none": "",
+      "notification": "󰂚<span foreground='red'><sup>󰄮</sup></span>",
+      "none": "󰂚",
+      "dnd-notification": "󰂛<span foreground='red'><sup>󰄮</sup></span>",
+      "dnd-none": "󰂛",
     },
     "return-type": "json",
     "exec-if": "which swaync-client",
@@ -201,8 +200,8 @@
     "return-type": "json",
     "format": "{icon}",
     "format-icons": {
-      "one": "",
-      "many": "",
+      "one": "󰝦",
+      "many": "󱂬",
     },
     "exec": "/bin/bash /usr/share/sway/scripts/scratchpad.sh; pkill -RTMIN+7 waybar",
     "on-click": "swaymsg 'scratchpad show'",
@@ -214,8 +213,8 @@
     "return-type": "json",
     "format": "{icon}",
     "format-icons": {
-      "Playing": "",
-      "Paused": "",
+      "Playing": "󰐊",
+      "Paused": "󰏤",
     },
     "exec": "playerctl metadata --format '{\"alt\": \"{{status}}\", \"tooltip\": \"{{playerName}}:  {{markup_escape(title)}} - {{markup_escape(artist)}}\" }'",
     "on-click": "playerctl play-pause; pkill -RTMIN+5 waybar",
@@ -229,7 +228,7 @@
     "return-type": "json",
     "format": "{}",
     "tooltip-format": "{tooltip}",
-    "exec": "echo '{\"class\": \"recording\",\"text\":\"\",\"tooltip\":\"press $mod+Esc to stop recording\"}'",
+    "exec": "echo '{\"class\": \"recording\",\"text\":\"󰑊\",\"tooltip\":\"press $mod+Esc to stop recording\"}'",
     "exec-if": "pgrep wf-recorder",
     "on-click": "killall -s SIGINT wf-recorder",
     "signal": 8,
@@ -240,10 +239,10 @@
     "tooltip-format": "Power profile: {profile}\nDriver: {driver}\n\nClick to cycle profiles",
     "tooltip": true,
     "format-icons": {
-      "default": "",
-      "performance": "",
-      "balanced": "",
-      "power-saver": ""
+      "default": "󰠠",
+      "performance": "󰠠",
+      "balanced": "󰗑",
+      "power-saver": "󰌪"
     },
     "on-click": "powerprofilesctl cycle"
   },
