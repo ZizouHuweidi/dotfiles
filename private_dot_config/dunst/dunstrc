@@ -1,0 +1,74 @@
+[global]
+# Display settings
+monitor = 0
+follow = keyboard
+width = 400
+height = (0, 300)
+origin = top-right
+offset = 20x20
+scale = 0
+notification_limit = 5
+
+# Progress bar
+progress_bar = true
+progress_bar_height = 10
+progress_bar_frame_width = 1
+progress_bar_min_width = 150
+progress_bar_max_width = 300
+
+# Appearance
+text_icon_padding = 10
+icon_position = left
+min_icon_size = 32
+max_icon_size = 64
+title = Dunst
+class = Dunst
+
+# Timeouts (in seconds)
+timeout = 5
+idle_threshold = 120
+
+# Behavior
+show_age_threshold = 60
+ignore_newline = no
+stack_duplicates = true
+hide_duplicate_count = false
+sticky_history = yes
+history_length = 20
+
+# Format
+format = "<b>%s</b>\n%b"
+markup = full
+
+# Gruvbox Dark Theme Colors
+frame_color = "#504945"
+separator_color = "#504945"
+highlight = "#fabd2f"
+
+[urgency_low]
+background = "#3c3836"
+foreground = "#a89984"
+timeout = 5
+
+[urgency_normal]
+background = "#282828"
+foreground = "#ebdbb2"
+timeout = 5
+
+[urgency_critical]
+background = "#cc241d"
+foreground = "#ebdbb2"
+timeout = 0
+
+# Rules for specific apps (optional)
+[spotify]
+appname = "Spotify"
+format = "<b>%s</b>\n%b"
+
+[screenshot]
+summary = "*screenshot*"
+timeout = 3
+
+[play_sound]
+summary = "*"
+script = /dev/null

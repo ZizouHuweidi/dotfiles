@@ -154,6 +154,31 @@ install_dnf_packages() {
     intel-media-driver
     libva-intel-driver
     mesa-va-drivers
+    jq
+  )
+
+  # Sway-specific packages
+  local sway_packages=(
+    dunst
+    thunar
+    thunar-archive-plugin
+    thunar-media-tags-plugin
+    thunar-volman
+    brightnessctl
+    pulseaudio-utils
+    libnotify
+    playerctl
+    lxqt-policykit
+    wl-clipboard
+    slurp
+    grim
+    gammastep
+    gammastep-indicator
+    mpris-proxy
+    wl-mirror
+    wlogout
+    wdisplays
+    power-profiles-daemon
   )
 
   print_info "Updating package cache..."
@@ -166,19 +191,22 @@ install_dnf_packages() {
   print_info "Enabling Cisco OpenH264 repository..."
   sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
 
+  print_info "Swapping ffmpeg-free for full ffmpeg..."
+  sudo dnf swap -y 'ffmpeg-free' 'ffmpeg' --allowerasing || true
+
   print_info "Installing packages..."
   sudo dnf install -y \
     "${system_packages[@]}" \
     "${terminal_packages[@]}" \
     "${media_packages[@]}" \
     "${dev_packages[@]}" \
-    "${sys_packages[@]}"
+    "${sys_packages[@]}" \
+    "${sway_packages[@]}"
 
   print_info "Installing multimedia codecs group..."
-  sudo dnf4 group install -y multimedia
-  sudo dnf swap -y 'ffmpeg-free' 'ffmpeg' --allowerasing
-  sudo dnf upgrade -y @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
-  sudo dnf group install -y sound-and-video
+  sudo dnf4 group install -y multimedia || true
+  sudo dnf upgrade -y @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin || true
+  sudo dnf group install -y sound-and-video || true
 
   print_success "DNF packages installed"
 }

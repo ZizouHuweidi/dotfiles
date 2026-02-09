@@ -1,0 +1,35 @@
+# Sway Environment Variables
+# This file is sourced by Fedora Sway on startup
+# Located at: ~/.config/sway/environment
+
+# GTK Theme - Force dark mode
+GTK_THEME=Adwaita-dark
+GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+
+# Icon theme
+ICON_THEME=Papirus-Dark
+
+# Cursor theme
+XCURSOR_THEME=Adwaita
+XCURSOR_SIZE=24
+
+# Qt platform theme for Qt apps
+QT_QPA_PLATFORMTHEME=gtk2
+QT_STYLE_OVERRIDE=Adwaita-Dark
+
+# Electron apps (Obsidian, VSCode, etc.) use native Wayland
+ELECTRON_OZONE_PLATFORM_HINT=wayland
+
+# Screen sharing support
+XDG_CURRENT_DESKTOP=sway
+XDG_SESSION_TYPE=wayland
+XDG_SESSION_DESKTOP=sway
+SDL_VIDEODRIVER=wayland
+_JAVA_AWT_WM_NONREPARENTING=1
+QT_QPA_PLATFORM=wayland
+
+# Firefox and other apps
+MOZ_ENABLE_WAYLAND=1
+
+# Optional: Enable wayland for Chromium/Electron
+# CHROMIUM_FLAGS="--ozone-platform=wayland"
