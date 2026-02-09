@@ -214,6 +214,58 @@ install_dnf_packages() {
 # Install tools not in standard repos
 install_additional_tools() {
   print_section "Installing additional tools"
+
+  # Install Gruvbox GTK Theme
+  install_gruvbox_gtk_theme
+}
+
+# Install Gruvbox GTK Theme
+install_gruvbox_gtk_theme() {
+  print_section "Installing Gruvbox GTK Theme"
+
+  # Install required dependencies for building themes
+  print_info "Installing theme build dependencies..."
+  sudo dnf install -y sassc gtk-murrine-engine || true
+
+  # Clone and install Gruvbox theme if not already installed
+  if [ ! -d "$HOME/.themes/Gruvbox" ]; then
+    print_info "Cloning Gruvbox GTK theme..."
+    local temp_dir=$(mktemp -d)
+    cd "$temp_dir"
+    
+    git clone https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme.git || {
+      print_error "Failed to clone Gruvbox theme"
+      cd -
+      rm -rf "$temp_dir"
+      return 1
+    }
+    
+    cd Gruvbox-GTK-Theme/themes
+    
+    print_info "Installing Gruvbox theme (dark variant with green accent)..."
+    ./install.sh -t green -c dark -l || {
+      print_error "Failed to install Gruvbox theme"
+      cd -
+      rm -rf "$temp_dir"
+      return 1
+    }
+    
+    cd -
+    rm -rf "$temp_dir"
+    
+    print_success "Gruvbox GTK theme installed"
+  else
+    print_success "Gruvbox GTK theme already installed"
+  fi
+
+  # Configure Flatpak to use custom themes
+  print_info "Configuring Flatpak theme support..."
+  sudo flatpak override --filesystem=$HOME/.themes || true
+  sudo flatpak override --filesystem=$HOME/.icons || true
+  flatpak override --user --filesystem=xdg-config/gtk-4.0 || true
+  sudo flatpak override --filesystem=xdg-config/gtk-4.0 || true
+
+  print_success "Gruvbox GTK theme setup complete"
 }
 
 # Install Flatpak applications
