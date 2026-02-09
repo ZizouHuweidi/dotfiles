@@ -13,7 +13,6 @@ return {
         "regex",
         "c",
         "cpp",
-        "templ",
       },
     },
   },

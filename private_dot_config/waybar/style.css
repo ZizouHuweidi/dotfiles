@@ -62,7 +62,7 @@ window#waybar.hidden {
 
 #custom-sep {
   color: #504945;
-  padding: 0 8px;
+  padding: 0 0px;
   font-size: 10px;
 }
 
