@@ -215,7 +215,7 @@ bindsym $alt+Print exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
 # bindsym $alt+Print exec swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp | grim -t png -g - $HOME/Pictures/Screenshots/Screenshot_2022-07-25-13-30-16_1366x768.png/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 
 # Parse text on screen and copy to clipboard
-bindsym Ctrl+Print exec slurp | xargs -I {} grim -s 2 -t png -g {} - | tesseract - - | wl-copy -n
+bindsym Ctrl+Print exec ~/.local/bin/screentext
 
 # }}}
 

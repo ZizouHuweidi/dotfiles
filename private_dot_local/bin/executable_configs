@@ -27,7 +27,7 @@ IFS=$'\n' names=($(sort <<<"${names[*]}"))
 unset IFS
 
 # Show menu and get choice
-choice=$(printf '%s\n' "${names[@]}" | rofi -dmenu -p 'Edit Config' -theme gruvbox)
+choice=$(printf '%s\n' "${names[@]}" | rofi -dmenu -p 'Edit Config')
 
 # Execute based on choice
 if [ "$choice" ] && [ -n "${configs[$choice]}" ]; then

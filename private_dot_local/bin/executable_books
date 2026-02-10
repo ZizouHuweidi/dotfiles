@@ -30,7 +30,7 @@ IFS=$'\n' titles=($(sort <<<"${titles[*]}"))
 unset IFS
 
 # Show menu and get choice
-choice=$(printf '%s\n' "${titles[@]}" | rofi -dmenu -p 'Choose Book' -theme gruvbox)
+choice=$(printf '%s\n' "${titles[@]}" | rofi -dmenu -p 'Choose Book')
 
 # Execute based on choice
 if [ "$choice" ] && [ -n "${books[$choice]}" ]; then
