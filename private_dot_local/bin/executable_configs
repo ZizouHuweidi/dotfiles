@@ -1,37 +1,37 @@
 #!/usr/bin/env bash
 
-# READER="kitty -e zathura"
 EDITOR="ghostty -e nvim"
 
-# An array of options to choose.
-# You can edit this list to add/remove config files.
-declare -a options=(
-  "website - $HOME/code/zizouhuweidi.github.io/"
-  "books - $HOME/.local/bin/books"
-  "configs - $HOME/.local/bin/configs"
-  "setup - $HOME/setup/packages.sh"
-  "nvim - $HOME/.config/nvim/lua/config/lazy.lua"
-  "sway - $HOME/.config/sway/config"
-  "waybar - $HOME/.config/waybar/config.jsonc"
-  "zsh - $HOME/.zshrc"
-  "ghostty - $HOME/.config/ghostty/config"
-  # "quit"
-)
+# Associative array to map config names to paths
+declare -A configs
+declare -a names
 
-# Piping the above array into dmenu.
-# We use "printf '%s\n'" to format the array one item to a line.
-choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i 20 -p 'Edit Config')
+# Config collection
+configs["website"]="$HOME/code/zizouhuweidi.github.io/"
+configs["books"]="$HOME/.local/bin/books"
+configs["configs"]="$HOME/.local/bin/configs"
+configs["setup"]="$HOME/setup/packages.sh"
+configs["nvim"]="$HOME/.config/nvim/lua/config/lazy.lua"
+configs["sway"]="$HOME/.config/sway/config"
+configs["waybar"]="$HOME/.config/waybar/config.jsonc"
+configs["zsh"]="$HOME/.zshrc"
+configs["ghostty"]="$HOME/.config/ghostty/config"
 
-# What to do when/if we choose 'quit'.
-if [[ "$choice" == "quit" ]]; then
-  echo "Program terminated." && exit 1
+# Get sorted list of names
+for name in "${!configs[@]}"; do
+  names+=("$name")
+done
 
-# What to do when/if we choose a file to edit.
-elif [ "$choice" ]; then
-  cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
-  $EDITOR "$cfg"
+# Sort names alphabetically
+IFS=$'\n' names=($(sort <<<"${names[*]}"))
+unset IFS
 
-# What to do if we just escape without choosing anything.
+# Show menu and get choice
+choice=$(printf '%s\n' "${names[@]}" | rofi -dmenu -p 'Edit Config' -theme gruvbox)
+
+# Execute based on choice
+if [ "$choice" ] && [ -n "${configs[$choice]}" ]; then
+  $EDITOR "${configs[$choice]}"
 else
   echo "Program terminated." && exit 1
 fi

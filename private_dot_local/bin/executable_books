@@ -2,38 +2,39 @@
 
 READER="ghostty -e zathura"
 
-# An array of options to choose.
-# You can edit this list to add/remove config files.
-declare -a options=(
-  "The Holy Quran - $HOME/Documents/books/deen/Holy_Quran_Full.pdf"
-  "The Sealed Nectar - $HOME/Documents/books/deen/English_ArRaheeq_AlMakhtum_THE_SEALED_NECTAR.pdf"
-  "Al Nawawi 40 Hadith - $HOME/Documents/books/deen/al-nawawi.pdf"
-  "Al-Ghazali's Philosophical Theology - $HOME/Documents/books/deen/Al-Ghazalis_Philosophical_Theology.pdf"
-  "Designing Data Intensive Application - $HOME/Documents/books/tech/ddia.pdf"
-  "High Performance Browser Networking - $HOME/Documents/books/tech/high_performance_browser_networking.pdf"
-  "PostgreSQL Query Optimization - $HOME/Documents/books/tech/postgre_query_optimization.pdf"
-  "Database Internals - $HOME/Documents/books/tech/database_internals.pdf"
-  "The Brothers of Karamazov - $HOME/Documents/books/general/the_brothers_karamazov.epub"
-  "The Princes of the Yen - $HOME/Documents/books/general/princes_of_the_yen.pdf"
-  "The Fiat Standard - $HOME/Documents/books/general/The_Fiat_Standard.pdf"
-  "The Bitcoin Standard - $HOME/Documents/books/general/The_Bitcoin_Standard.epub"
-  # "quit"
-)
+# Associative array to map titles to paths
+declare -A books
+declare -a titles
 
-# Piping the above array into dmenu.
-# We use "printf '%s\n'" to format the array one item to a line.
-choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i 20 -p 'Choose Book')
+# Book collection
+books["The Holy Quran"]="$HOME/Documents/books/deen/Holy_Quran_Full.pdf"
+books["The Sealed Nectar"]="$HOME/Documents/books/deen/English_ArRaheeq_AlMakhtum_THE_SEALED_NECTAR.pdf"
+books["Al Nawawi 40 Hadith"]="$HOME/Documents/books/deen/al-nawawi.pdf"
+books["Al-Ghazali's Philosophical Theology"]="$HOME/Documents/books/deen/Al-Ghazalis_Philosophical_Theology.pdf"
+books["Designing Data Intensive Application"]="$HOME/Documents/books/tech/ddia.pdf"
+books["High Performance Browser Networking"]="$HOME/Documents/books/tech/high_performance_browser_networking.pdf"
+books["PostgreSQL Query Optimization"]="$HOME/Documents/books/tech/postgre_query_optimization.pdf"
+books["Database Internals"]="$HOME/Documents/books/tech/database_internals.pdf"
+books["The Brothers of Karamazov"]="$HOME/Documents/books/general/the_brothers_karamazov.epub"
+books["The Princes of the Yen"]="$HOME/Documents/books/general/princes_of_the_yen.pdf"
+books["The Fiat Standard"]="$HOME/Documents/books/general/The_Fiat_Standard.pdf"
+books["The Bitcoin Standard"]="$HOME/Documents/books/general/The_Bitcoin_Standard.epub"
 
-# What to do when/if we choose 'quit'.
-if [[ "$choice" == "quit" ]]; then
-  echo "Program terminated." && exit 1
+# Get sorted list of titles
+for title in "${!books[@]}"; do
+  titles+=("$title")
+done
 
-# What to do when/if we choose a file to edit.
-elif [ "$choice" ]; then
-  cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
-  $READER "$cfg"
+# Sort titles alphabetically
+IFS=$'\n' titles=($(sort <<<"${titles[*]}"))
+unset IFS
 
-# What to do if we just escape without choosing anything.
+# Show menu and get choice
+choice=$(printf '%s\n' "${titles[@]}" | rofi -dmenu -p 'Choose Book' -theme gruvbox)
+
+# Execute based on choice
+if [ "$choice" ] && [ -n "${books[$choice]}" ]; then
+  $READER "${books[$choice]}"
 else
   echo "Program terminated." && exit 1
 fi

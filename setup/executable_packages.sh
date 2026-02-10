@@ -180,6 +180,7 @@ install_dnf_packages() {
     wdisplays
     power-profiles-daemon
     nwg-look
+    rofi
   )
 
   print_info "Updating package cache..."

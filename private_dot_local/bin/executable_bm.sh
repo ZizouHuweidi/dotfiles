@@ -54,7 +54,7 @@ declare -a options=(
 "quit"
 )
 
-choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i -l 20 -p 'Bookmarks')
+choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -p 'Bookmarks' -theme gruvbox)
 
 
 if [[ "$choice" == quit ]]; then
