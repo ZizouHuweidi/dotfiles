@@ -100,6 +100,7 @@ install_dnf_packages() {
     tldr
     zoxide
     lsd
+    gh
   )
 
   # Media and utility tools

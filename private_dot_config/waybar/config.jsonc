@@ -19,9 +19,10 @@
     "cpu",
     "temperature",
     "memory",
-    "pulseaudio",
     "custom/sep",
+    "pulseaudio",
     "group/power",
+    "custom/sep",
     "power-profiles-daemon",
     "tray",
   ],
@@ -89,8 +90,8 @@
     "interval": 5,
     "states": {
       "warning": 70,
-      "critical": 85
-    }
+      "critical": 85,
+    },
   },
   "disk": {
     "format": "<span foreground='#928374'></span>{percentage_free}% 󰋊",
@@ -242,8 +243,8 @@
       "default": "󰠠",
       "performance": "󰠠",
       "balanced": "󰗑",
-      "power-saver": "󰌪"
+      "power-saver": "󰌪",
     },
-    "on-click": "powerprofilesctl cycle"
+    "on-click": "powerprofilesctl cycle",
   },
 }

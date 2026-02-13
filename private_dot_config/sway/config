@@ -43,7 +43,7 @@ for_window [app_id=".*"] opacity 0.95
 
 # Output {{{
 output * bg ~/wallpapers/guts-forest.jpg fill
-output * scale 1.0
+output * scale 1.1
 # output * bg "#282828" solid_color
 # }}}
 
@@ -74,6 +74,7 @@ exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 exec dunst
 exec mpris-proxy
+# exec qs -c noctalia-shell
 
 set $volume_helper_cmd /usr/libexec/sway/volume-helper
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
