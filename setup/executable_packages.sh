@@ -173,6 +173,7 @@ install_dnf_packages() {
     wl-clipboard
     slurp
     grim
+    swappy
     gammastep
     gammastep-indicator
     mpris-proxy
@@ -182,6 +183,7 @@ install_dnf_packages() {
     power-profiles-daemon
     nwg-look
     rofi
+    rofimoji
   )
 
   print_info "Updating package cache..."

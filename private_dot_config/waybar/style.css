@@ -1,7 +1,7 @@
 * {
   border: none;
   font-family: JetBrainsMono Nerd Font;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 window#waybar {
@@ -80,7 +80,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.focused {
-  background-color: #458588;
+  background-color: #98971a;
   border-bottom: none;
   border-radius: 5px;
 }
