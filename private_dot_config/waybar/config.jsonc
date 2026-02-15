@@ -14,7 +14,7 @@
     "idle_inhibitor",
     "sway/mode",
   ],
-  "modules-center": ["mpris", "clock"],
+  "modules-center": ["mpris", "clock", "custom/prayerbar"],
   "modules-right": [
     "cpu",
     "temperature",
@@ -233,6 +233,14 @@
     "exec-if": "pgrep wf-recorder",
     "on-click": "killall -s SIGINT wf-recorder",
     "signal": 8,
+  },
+
+  "custom/prayerbar": {
+    "format": "{text}",
+    "tooltip": true,
+    "interval": 60,
+    "exec": "prayerbar --city Benghazi --country Libya --method 15",
+    "return-type": "json",
   },
 
   "power-profiles-daemon": {
