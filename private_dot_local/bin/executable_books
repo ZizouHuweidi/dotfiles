@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-READER="ghostty -e zathura"
+READER="ghostty -e swallow zathura"
 
 # Associative array to map titles to paths
 declare -A books

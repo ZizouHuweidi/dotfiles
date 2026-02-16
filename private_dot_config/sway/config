@@ -84,7 +84,7 @@ exec dbus-update-activation-environment --systemd --all
 
 exec gammastep-indicator
 exec blueman-applet
-exec /usr/lib/kdeconnectd -platform offscreen 
+exec kdeconnectd -platform offscreen 
 
 exec nm-applet --indicator
 
@@ -227,13 +227,11 @@ bindsym $mod+Shift+Return exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% 
 
 bindsym $mod+Shift+s exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% pavucontrol
 
-# bindsym $mod+m exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% tauon
+bindsym $mod+m exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% ghostty -e cmus
 
 bindsym $mod+Shift+f exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% ghostty -e yazi
 
 # bindsym $mod+n exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% obsidian
-
-bindsym $mod+Shift+a exec ~/.config/sway/bin/sway-scratchpad -t -d 50%x50% blanket
 
 # }}}
 
