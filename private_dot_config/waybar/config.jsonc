@@ -86,7 +86,7 @@
     "tooltip": false,
   },
   "memory": {
-    "format": "{}% ",
+    "format": "{}%  ",
     "interval": 5,
     "states": {
       "warning": 70,

@@ -109,6 +109,7 @@ install_dnf_packages() {
     transmission-cli
     yt-dlp
     fastfetch
+    cmus
     android-file-transfer
     ffmpeg
     gstreamer1-plugins-base
