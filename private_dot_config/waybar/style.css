@@ -1,7 +1,7 @@
 * {
   border: none;
   font-family: JetBrainsMono Nerd Font;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 window#waybar {
@@ -81,7 +81,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.focused {
-  background-color: #98971a;
+  background-color: #458588;
   border-bottom: none;
   border-radius: 5px;
 }
@@ -163,7 +163,7 @@ window#waybar.hidden {
 }
 
 #mpris {
-  color: #98971a;
+  color: #a89984;
 }
 
 #mpd {

@@ -16,7 +16,7 @@ font pango:FiraCode Nerd Font Mono 8
 title_align center
 
 # Gaps (Outer gaps are added to the inner gaps)
-gaps inner 7
+gaps inner 3
 gaps outer 3
 
 # Only enable gaps on a workspace when there is at least one container
@@ -43,7 +43,7 @@ for_window [app_id=".*"] opacity 0.95
 
 # Output {{{
 output * bg ~/wallpapers/guts-forest.jpg fill
-output * scale 1.1
+output * scale 1.0
 # output * bg "#282828" solid_color
 # }}}
 
@@ -75,7 +75,6 @@ exec wl-paste --type image --watch cliphist store
 exec dunst
 exec mpris-proxy
 
-set $volume_helper_cmd /usr/libexec/sway/volume-helper
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -84,7 +83,7 @@ exec dbus-update-activation-environment --systemd --all
 
 exec gammastep-indicator
 exec blueman-applet
-exec kdeconnectd -platform offscreen 
+# exec kdeconnect-indicator
 
 exec nm-applet --indicator
 
@@ -175,11 +174,10 @@ mode "present" {
 bindsym $mod+Ctrl+Shift+d exec wdisplays
 
 # -- Function keys --
-# Volume controls with Fedora Sway volume helper
-bindsym --locked XF86AudioRaiseVolume exec $volume_helper_cmd --limit 100 --increase 5
-bindsym --locked XF86AudioLowerVolume exec $volume_helper_cmd --limit 100 --decrease 5
-bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && $volume_helper_cmd
-bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_SOURCE@ toggle
 
 # Brightness controls with brightnessctl
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
@@ -446,7 +444,6 @@ assign [app_id="obsidian"] 3
 
 # hide waybar
 bindsym $mod+p exec killall -SIGUSR1 waybar
-# bindsym $mod+p bar mode toggle
 
 bar {
 	  swaybar_command waybar
