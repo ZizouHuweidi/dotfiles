@@ -109,7 +109,6 @@ bindgesture swipe:down workspace back_and_forth
 
 bindsym $mod+Return exec ghostty
 bindsym $mod+Control+Return exec thunar
-bindsym $mod+Shift+m exec  gnome-music
 bindsym $mod+Shift+v exec  ghostty -e nvim
 bindsym $mod+Shift+b exec  google-chrome-stable
 bindsym $mod+Shift+n exec  flatpak run md.obsidian.Obsidian
@@ -243,7 +242,7 @@ bindswitch --reload --locked lid:off output $laptop enable
 exec_always ~/.config/sway/bin/clamshell.sh
 
 # Lockscreen
-bindsym $mod+Shift+x exec swaylock
+bindsym $alt+Control+x exec swaylock
 
 # sticky window
 bindsym $mod+grave sticky toggle
