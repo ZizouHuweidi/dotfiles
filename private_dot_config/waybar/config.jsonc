@@ -14,7 +14,7 @@
     "idle_inhibitor",
     "sway/mode",
   ],
-  "modules-center": ["mpris", "clock", "custom/prayerbar"],
+  "modules-center": ["mpris", "clock", "custom/adhanctl"],
   "modules-right": [
     "cpu",
     "temperature",
@@ -235,11 +235,11 @@
     "signal": 8,
   },
 
-  "custom/prayerbar": {
-    "format": "{text}",
+  "custom/adhanctl": {
+    "format": "{text} 🕌",
     "tooltip": true,
     "interval": 60,
-    "exec": "prayerbar --city Benghazi --country Libya --method 15",
+    "exec": "adhanctl waybar --short",
     "return-type": "json",
   },
 
