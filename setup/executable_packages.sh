@@ -133,6 +133,7 @@ install_dnf_packages() {
     golang
     rustup
     bun
+    deno
     uv
     zed
     codium

@@ -32,16 +32,28 @@ print_info() {
 show_menu() {
   echo "Select components to install:"
   echo ""
-  echo "1) Packages (DNF + Flatpak)"
-  echo "2) Fonts (Nerd Fonts)"
-  echo "3) Syncthing"
-  echo "4) Docker"
-  echo "5) Battery Threshold (ThinkPad)"
-  echo "6) Oh-My-Zsh"
-  echo "7) SELinux permissive"
-  echo "8) All of the above"
+  echo "1) DNF Configuration"
+  echo "2) Packages (DNF + Flatpak)"
+  echo "3) Fonts (Nerd Fonts)"
+  echo "4) Syncthing"
+  echo "5) Docker"
+  echo "6) Battery Threshold (ThinkPad)"
+  echo "7) Oh-My-Zsh"
+  echo "8) SELinux permissive"
+  echo "9) Change SDDM Background"
+  echo "10) All of the above"
   echo "0) Exit"
   echo ""
+}
+
+run_dnf_config() {
+  print_info "Configuring DNF..."
+  if bash "${SCRIPT_DIR}/dnf-config.sh"; then
+    print_success "DNF configured successfully"
+  else
+    print_error "Failed to configure DNF"
+    return 1
+  fi
 }
 
 run_packages() {
@@ -114,7 +126,18 @@ run_selinux() {
   fi
 }
 
+run_sddm() {
+  print_info "setting sddm background..."
+  if bash "${SCRIPT_DIR}/sddm.sh"; then
+    print_success "new sddm background set"
+  else
+    print_error "Failed to change sddm background"
+    return 1
+  fi
+}
+
 run_all() {
+  run_dnf_config
   run_packages
   run_fonts
   run_syncthing
@@ -122,6 +145,7 @@ run_all() {
   run_battery
   run_ohmyzsh
   run_selinux
+  run_sddm
 }
 
 interactive_mode() {
@@ -129,17 +153,19 @@ interactive_mode() {
 
   while true; do
     show_menu
-    read -p "Enter your choice [0-8]: " choice
+    read -p "Enter your choice [0-10]: " choice
 
     case $choice in
-    1) run_packages ;;
-    2) run_fonts ;;
-    3) run_syncthing ;;
-    4) run_docker ;;
-    5) run_battery ;;
-    6) run_ohmyzsh ;;
-    7) run_selinux ;;
-    8) run_all ;;
+    1) run_dnf_config ;;
+    2) run_packages ;;
+    3) run_fonts ;;
+    4) run_syncthing ;;
+    5) run_docker ;;
+    6) run_battery ;;
+    7) run_ohmyzsh ;;
+    8) run_selinux ;;
+    9) run_sddm ;;
+    10) run_all ;;
     0)
       echo "Exiting..."
       exit 0
@@ -161,20 +187,22 @@ Fedora Setup Script
 Usage: $0 [OPTIONS]
 
 Options:
+  --dnf-config        Configure DNF (install_weak_deps=False)
   --packages          Install DNF and Flatpak packages
   --fonts             Install Nerd Fonts
   --syncthing         Setup Syncthing service
   --docker            Setup Docker
   --battery           Setup ThinkPad battery threshold
   --ohmyzsh           Install Oh-My-Zsh
-  --selinux           Install Oh-My-Zsh
+  --selinux           Make SELinux permissive
+  --sddm              Change SDDM Background
   --all               Run all setup scripts
   -h, --help          Show this help message
 
 Examples:
   $0                  Run interactive menu
   $0 --all            Install everything
-  $0 --packages --fonts   Install packages and fonts only
+  $0 --dnf-config --packages   Configure DNF and install packages
 EOF
 }
 
@@ -186,6 +214,10 @@ main() {
 
     while [[ $# -gt 0 ]]; do
       case $1 in
+      --dnf-config)
+        run_dnf_config
+        shift
+        ;;
       --packages)
         run_packages
         shift
@@ -212,6 +244,10 @@ main() {
         ;;
       --selinux)
         run_selinux
+        shift
+        ;;
+      --sddm)
+        run_sddm
         shift
         ;;
       --all)

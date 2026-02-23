@@ -376,6 +376,14 @@ bindsym $mod+Control+KP_8 move container to workspace $ws8
 bindsym $mod+Control+KP_9 move container to workspace $ws9
 bindsym $mod+Control+KP_0 move container to workspace $ws10
 
+
+# Move the current workspace to the next output
+bindsym $mod+Shift+Tab move workspace to output right
+# # Move focused container to the next output
+bindsym $mod+Control+Tab move container to output right
+
+# move focused workspace to output
+
 # }}}
 
 # Resize / Move / Gaps {{{
