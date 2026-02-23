@@ -38,7 +38,8 @@ show_menu() {
   echo "4) Docker"
   echo "5) Battery Threshold (ThinkPad)"
   echo "6) Oh-My-Zsh"
-  echo "7) All of the above"
+  echo "7) SELinux permissive"
+  echo "8) All of the above"
   echo "0) Exit"
   echo ""
 }
@@ -103,6 +104,16 @@ run_ohmyzsh() {
   fi
 }
 
+run_selinux() {
+  print_info "setting selinux to permissive..."
+  if bash "${SCRIPT_DIR}/selinux.sh"; then
+    print_success "selinux is now permissive"
+  else
+    print_error "Failed to alter selinux"
+    return 1
+  fi
+}
+
 run_all() {
   run_packages
   run_fonts
@@ -110,6 +121,7 @@ run_all() {
   run_docker
   run_battery
   run_ohmyzsh
+  run_selinux
 }
 
 interactive_mode() {
@@ -117,7 +129,7 @@ interactive_mode() {
 
   while true; do
     show_menu
-    read -p "Enter your choice [0-7]: " choice
+    read -p "Enter your choice [0-8]: " choice
 
     case $choice in
     1) run_packages ;;
@@ -126,7 +138,8 @@ interactive_mode() {
     4) run_docker ;;
     5) run_battery ;;
     6) run_ohmyzsh ;;
-    7) run_all ;;
+    7) run_selinux ;;
+    8) run_all ;;
     0)
       echo "Exiting..."
       exit 0
@@ -154,6 +167,7 @@ Options:
   --docker            Setup Docker
   --battery           Setup ThinkPad battery threshold
   --ohmyzsh           Install Oh-My-Zsh
+  --selinux           Install Oh-My-Zsh
   --all               Run all setup scripts
   -h, --help          Show this help message
 
@@ -194,6 +208,10 @@ main() {
         ;;
       --ohmyzsh)
         run_ohmyzsh
+        shift
+        ;;
+      --selinux)
+        run_selinux
         shift
         ;;
       --all)
