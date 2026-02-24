@@ -285,6 +285,7 @@ install_flatpaks() {
     "com.calibre_ebook.calibre"
     "com.rtosta.zapzap"
     "com.github.tchx84.Flatseal"
+    "it.mijorus.gearlever"
   )
 
   for app in "${flatpaks[@]}"; do
