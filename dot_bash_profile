@@ -1,10 +1,21 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+  . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+. "$HOME/.cargo/env"
+
+. "$HOME/.local/share/../bin/env"
 
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="ghostty"
 export BROWSER="chrome-browser-stable"
 
-export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
+# export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
 
 # XDG Paths
 export XDG_CONFIG_HOME=$HOME/.config

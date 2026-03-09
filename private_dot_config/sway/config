@@ -69,7 +69,7 @@ seat * {
 # }}}
 
 # Autostart {{{
-exec /usr/libexec/lxqt-policykit-agent
+exec /usr/libexec/xfce-polkit
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 exec dunst
@@ -111,7 +111,7 @@ bindgesture swipe:down workspace back_and_forth
 bindsym $mod+Return exec ghostty
 bindsym $mod+Control+Return exec thunar
 bindsym $mod+Shift+v exec  ghostty -e nvim
-bindsym $mod+Shift+b exec  google-chrome-stable
+bindsym $mod+Shift+b exec  flatpak run com.google.Chrome
 bindsym $mod+Shift+n exec  flatpak run md.obsidian.Obsidian
 bindsym $mod+c exec dunstctl close-all
 bindsym $mod+control+n exec dunstctl history-pop
@@ -243,7 +243,7 @@ bindswitch --reload --locked lid:off output $laptop enable
 exec_always ~/.config/sway/bin/clamshell.sh
 
 # Lockscreen
-bindsym $alt+Control+x exec swaylock
+bindsym $alt+Control+l exec swaylock
 
 # sticky window
 bindsym $mod+grave sticky toggle
