@@ -84,7 +84,7 @@ exec dbus-update-activation-environment --systemd --all
 
 exec gammastep-indicator
 exec blueman-applet
-# exec kdeconnect-indicator
+exec kdeconnect-indicator
 
 exec nm-applet --indicator
 
