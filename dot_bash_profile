@@ -8,8 +8,6 @@ fi
 # User specific environment and startup programs
 . "$HOME/.cargo/env"
 
-. "$HOME/.local/share/../bin/env"
-
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="ghostty"
