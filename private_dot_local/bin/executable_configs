@@ -10,6 +10,7 @@ declare -a names
 configs["website"]="$HOME/code/zizouhuweidi.github.io/"
 configs["books"]="$HOME/.local/bin/books"
 configs["configs"]="$HOME/.local/bin/configs"
+configs["zen"]="$HOME/code/zen/recipes/recipe.yml"
 configs["nvim"]="$HOME/.config/nvim/lua/config/lazy.lua"
 configs["sway"]="$HOME/.config/sway/config"
 configs["waybar"]="$HOME/.config/waybar/config.jsonc"
