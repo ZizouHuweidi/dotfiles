@@ -10,11 +10,10 @@ declare -a names
 configs["website"]="$HOME/code/zizouhuweidi.github.io/"
 configs["books"]="$HOME/.local/bin/books"
 configs["configs"]="$HOME/.local/bin/configs"
-configs["setup"]="$HOME/setup/packages.sh"
 configs["nvim"]="$HOME/.config/nvim/lua/config/lazy.lua"
 configs["sway"]="$HOME/.config/sway/config"
 configs["waybar"]="$HOME/.config/waybar/config.jsonc"
-configs["zsh"]="$HOME/.zshrc"
+configs["fish"]="$HOME/.config/fish/config.fish"
 configs["ghostty"]="$HOME/.config/ghostty/config"
 
 # Get sorted list of names
