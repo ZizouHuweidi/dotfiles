@@ -225,7 +225,7 @@ bindsym $mod+Shift+Return exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% 
 
 bindsym $mod+Shift+s exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% pavucontrol
 
-bindsym $mod+m exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% ghostty -e cmus
+bindsym $mod+m exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% flatpak run com.github.taiko2k.tauonmb
 
 bindsym $mod+Shift+f exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% ghostty -e yazi
 
