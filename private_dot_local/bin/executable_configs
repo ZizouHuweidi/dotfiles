@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-EDITOR="ghostty -e nvim"
+EDITOR="kitty -e nvim"
 
 # Associative array to map config names to paths
 declare -A configs
