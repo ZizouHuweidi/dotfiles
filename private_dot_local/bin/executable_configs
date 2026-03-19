@@ -15,7 +15,7 @@ configs["nvim"]="$HOME/.config/nvim/lua/config/lazy.lua"
 configs["sway"]="$HOME/.config/sway/config"
 configs["waybar"]="$HOME/.config/waybar/config.jsonc"
 configs["fish"]="$HOME/.config/fish/config.fish"
-configs["ghostty"]="$HOME/.config/ghostty/config"
+configs["kitty"]="$HOME/.config/kitty/kitty.conf"
 
 # Get sorted list of names
 for name in "${!configs[@]}"; do

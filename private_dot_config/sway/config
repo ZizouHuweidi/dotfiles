@@ -37,7 +37,7 @@ popup_during_fullscreen smart
 
 # for_window [class=".*"] opacity 0.90
 for_window [app_id=".*"] opacity 0.95
-# for_window [app_id="ghostty"] opacity 0.90
+# for_window [app_id="kitty"] opacity 0.90
 
 # }}}
 
@@ -108,9 +108,9 @@ bindgesture swipe:down workspace back_and_forth
 
 # -- Apps --
 
-bindsym $mod+Return exec ghostty
+bindsym $mod+Return exec kitty
 bindsym $mod+Control+Return exec thunar
-bindsym $mod+Shift+v exec  ghostty -e nvim
+bindsym $mod+Shift+v exec  kitty -e nvim
 bindsym $mod+Shift+b exec  flatpak run com.google.Chrome
 bindsym $mod+Shift+n exec  flatpak run md.obsidian.Obsidian
 bindsym $mod+c exec dunstctl close-all
@@ -221,15 +221,15 @@ bindsym Ctrl+Print exec ~/.local/bin/screentext
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-bindsym $mod+Shift+Return exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% ghostty
+bindsym $mod+Shift+Return exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% kitty
 
 bindsym $mod+Shift+s exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% pavucontrol
 
-bindsym $mod+Shift+t exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% ghostty -e btop
+bindsym $mod+Shift+t exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% kitty -e btop
 
 bindsym $mod+m exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% flatpak run com.github.taiko2k.tauonmb
 
-bindsym $mod+Shift+f exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% ghostty -e yazi
+bindsym $mod+Shift+f exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% kitty -e yazi
 
 # bindsym $mod+n exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% obsidian
 
