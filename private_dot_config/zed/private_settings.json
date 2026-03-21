@@ -20,7 +20,7 @@
     "enabled": true
   },
   "buffer_font_family": "FiraCode Nerd Font Mono",
-  "icon_theme": "Zed (Default)",
+  "icon_theme": "Material Icon Theme",
   "session": {
     "trust_all_worktrees": true
   },
