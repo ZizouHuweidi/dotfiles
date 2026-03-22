@@ -149,22 +149,6 @@
     "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
     "on-click-middle": "pavucontrol",
   },
-  "custom/swaync": {
-    "tooltip": false,
-    "format": " {} {icon} ",
-    "format-icons": {
-      "notification": "󰂚<span foreground='red'><sup>󰄮</sup></span>",
-      "none": "󰂚",
-      "dnd-notification": "󰂛<span foreground='red'><sup>󰄮</sup></span>",
-      "dnd-none": "󰂛",
-    },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true,
-  },
 
   "custom/notification": {
     "return-type": "json",
@@ -208,6 +192,7 @@
     "on-click": "swaymsg 'scratchpad show'",
     "signal": 7,
   },
+
   "custom/playerctl": {
     "interval": "once",
     "tooltip": true,
@@ -224,6 +209,7 @@
     "on-scroll-down": "playerctl position 10-; pkill -RTMIN+5 waybar",
     "signal": 5,
   },
+
   "custom/wf-recorder": {
     "interval": "once",
     "return-type": "json",
