@@ -1,0 +1,74 @@
+{
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "q",
+    ): System(LogOut),
+    (
+        modifiers: [
+            Super,
+        ],
+    ): System(Launcher),
+    (
+        modifiers: [
+            Ctrl,
+            Alt,
+        ],
+        key: "l",
+    ): System(LockScreen),
+    (
+        modifiers: [
+            Alt,
+        ],
+        key: "l",
+    ): NextWorkspace,
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "n",
+        description: Some("obsidian"),
+    ): Spawn("flatpak run md.obsidian.Obsidian"),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "d",
+    ): System(Launcher),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "Return",
+        description: Some("kitty"),
+    ): Spawn("kitty"),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "BackSpace",
+    ): Disable,
+    (
+        modifiers: [
+            Alt,
+        ],
+        key: "h",
+    ): PreviousWorkspace,
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "b",
+        description: Some("chrome"),
+    ): Spawn("flatpak run com.google.Chrome"),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "grave",
+    ): ToggleSticky,
+}
