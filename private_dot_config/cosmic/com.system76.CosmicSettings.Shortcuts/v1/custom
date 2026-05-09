@@ -1,0 +1,74 @@
+{
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "Return",
+        description: Some("kitty"),
+    ): Spawn("kitty"),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "d",
+    ): System(Launcher),
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "q",
+    ): System(LogOut),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "BackSpace",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+    ): System(Launcher),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "grave",
+    ): ToggleSticky,
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "n",
+        description: Some("obsidian"),
+    ): Spawn("flatpak run md.obsidian.Obsidian"),
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "b",
+        description: Some("brave"),
+    ): Spawn("brave-origin"),
+    (
+        modifiers: [
+            Ctrl,
+            Alt,
+        ],
+        key: "l",
+    ): System(LockScreen),
+    (
+        modifiers: [
+            Alt,
+        ],
+        key: "l",
+    ): NextWorkspace,
+    (
+        modifiers: [
+            Alt,
+        ],
+        key: "h",
+    ): PreviousWorkspace,
+}
