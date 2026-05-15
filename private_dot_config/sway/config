@@ -111,7 +111,7 @@ bindgesture swipe:down workspace back_and_forth
 bindsym $mod+Return exec kitty
 bindsym $mod+Control+Return exec thunar
 bindsym $mod+Shift+v exec  kitty -e nvim
-bindsym $mod+Shift+b exec  flatpak run com.google.Chrome
+bindsym $mod+Shift+b exec  brave-origin
 bindsym $mod+Shift+n exec  flatpak run md.obsidian.Obsidian
 bindsym $mod+c exec dunstctl close-all
 bindsym $mod+control+n exec dunstctl history-pop
