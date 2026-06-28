@@ -10,8 +10,8 @@ fi
 
 # Default programs:
 export EDITOR="nvim"
-export TERMINAL="ghostty"
-export BROWSER="chrome-browser-stable"
+export TERMINAL="kitty"
+export BROWSER="brave-origin"
 
 # export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
 
