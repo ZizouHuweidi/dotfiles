@@ -239,6 +239,12 @@ bindsym $mod+Shift+f exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% kitty
 
 set $laptop eDP-1
 
+bindswitch --locked lid:on exec ~/.config/sway/bin/clamshell.sh closed
+bindswitch --locked lid:off exec ~/.config/sway/bin/clamshell.sh open
+
+# Synchronize the state when Sway starts or its config is reloaded.
+exec_always ~/.config/sway/bin/clamshell.sh sync
+
 # Lockscreen
 bindsym $alt+Control+l exec swaylock
 
