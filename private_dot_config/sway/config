@@ -238,11 +238,6 @@ bindsym $mod+Shift+f exec ~/.config/sway/bin/sway-scratchpad -t -d 75%x75% kitty
 # sway keys {{{
 
 set $laptop eDP-1
-# bindswitch --reload --locked lid:on output $laptop disable
-# bindswitch --reload --locked lid:off output $laptop enable
-
-# Run clamshell script on reload to restore correct lid state
-# exec_always ~/.config/sway/bin/clamshell.sh
 
 # Lockscreen
 bindsym $alt+Control+l exec swaylock
