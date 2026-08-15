@@ -1,5 +1,5 @@
 Some([
     "com.system76.CosmicAppletTime",
-    "com.vintagetechie.CosmicExtAppletTempest",
+    "com.github.DiegoMMR.CosmicExtAppletNowPlaying",
     "com.system76.CosmicAppletNotifications",
 ])

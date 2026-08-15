@@ -1,0 +1,7 @@
+[
+    (
+        appid: ".*",
+        title: "^(Picture in picture|Picture in Picture|Picture-in-Picture)$",
+        enabled: true,
+    ),
+]

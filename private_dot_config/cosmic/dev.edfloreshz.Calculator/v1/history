@@ -1,0 +1,102 @@
+[
+    (
+        expression: "99*99",
+        outcome: "9801",
+        decimal_comma: false,
+    ),
+    (
+        expression: "55*55",
+        outcome: "3025",
+        decimal_comma: false,
+    ),
+    (
+        expression: "125+55",
+        outcome: "180",
+        decimal_comma: false,
+    ),
+    (
+        expression: "180-25",
+        outcome: "155",
+        decimal_comma: false,
+    ),
+    (
+        expression: "155/5",
+        outcome: "31",
+        decimal_comma: false,
+    ),
+    (
+        expression: "31*5",
+        outcome: "155",
+        decimal_comma: false,
+    ),
+    (
+        expression: "155*5",
+        outcome: "775",
+        decimal_comma: false,
+    ),
+    (
+        expression: "775**3",
+        outcome: "465484375",
+        decimal_comma: false,
+    ),
+    (
+        expression: "465484375//5",
+        outcome: "93096875",
+        decimal_comma: false,
+    ),
+    (
+        expression: "93096875//55",
+        outcome: "1692670",
+        decimal_comma: false,
+    ),
+    (
+        expression: "1692670/5",
+        outcome: "338534",
+        decimal_comma: false,
+    ),
+    (
+        expression: "338534/5",
+        outcome: "67706.8",
+        decimal_comma: false,
+    ),
+    (
+        expression: "500**3",
+        outcome: "125000000",
+        decimal_comma: false,
+    ),
+    (
+        expression: "20**2",
+        outcome: "400",
+        decimal_comma: false,
+    ),
+    (
+        expression: "400+600",
+        outcome: "1000",
+        decimal_comma: false,
+    ),
+    (
+        expression: "1000**10",
+        outcome: "1E30",
+        decimal_comma: false,
+    ),
+    (
+        expression: "10**3",
+        outcome: "1000",
+        decimal_comma: false,
+    ),
+    (
+        expression: "25**3",
+        outcome: "15625",
+        decimal_comma: false,
+    ),
+    (
+        expression: "5**3",
+        outcome: "125",
+        decimal_comma: false,
+    ),
+    (
+        expression: "125**5",
+        outcome: "30517578125",
+        decimal_comma: false,
+    ),
+]
