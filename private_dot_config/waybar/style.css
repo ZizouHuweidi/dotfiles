@@ -6,8 +6,8 @@
 
 window#waybar {
   /* background-color: rgba(18, 21, 29, 0.98); */
-  background-color: #282828;
-  /* background-color: rgba(0, 0, 0, 0); */
+  /* background-color: #282828; */
+  background-color: rgba(0, 0, 0, 0);
   /* border-top: 2px solid #98971a; */
   /* border-bottom: 2px solid #98971a; */
   /* border-left: 2px solid #98971a; */
@@ -42,14 +42,17 @@ window#waybar.hidden {
 #tray,
 #custom-adhanctl,
 #power-profiles-daemon {
-  background-color: #282828;
+  /* background-color: #282828; */
+  background-color: rgba(0, 0, 0, 0);
   padding: 0 6px;
   margin: 0 3px;
   border-radius: 6px;
   background-clip: padding-box;
   color: #ebdbb2;
-  border-top: 3px solid #282828;
-  border-bottom: 3px solid #282828;
+  /* border-top: 3px solid #282828; */
+  border-top: 3px solid rgba(0, 0, 0, 0);
+  /* border-bottom: 3px solid #282828; */
+  border-bottom: 3px solid rgba(0, 0, 0, 0);
 }
 
 #custom-notification {
