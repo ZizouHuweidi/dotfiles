@@ -8,7 +8,7 @@
   "gtk-layer-shell": true,
   "reload_style_on_change": true,
   "modules-left": ["sway/workspaces", "custom/sep", "sway/language", "idle_inhibitor", "sway/mode"],
-  "modules-center": ["mpris", "clock", "custom/adhanctl"],
+  "modules-center": ["custom/playerctl", "clock", "custom/adhanctl"],
   "modules-right": [
     "cpu",
     "temperature",
@@ -106,6 +106,7 @@
     "on-scroll-down": "light -U 1",
   },
   "battery": {
+    "bat": "BAT0",
     "states": {
       "warning": 30,
       "critical": 20,
@@ -187,20 +188,21 @@
   },
 
   "custom/playerctl": {
-    "interval": "once",
+    "interval": 1,
     "tooltip": true,
     "return-type": "json",
-    "format": "{icon}",
+    "format": "{text} {icon}",
     "format-icons": {
       "Playing": "󰐊",
       "Paused": "󰏤",
     },
-    "exec": "playerctl metadata --format '{\"alt\": \"{{status}}\", \"tooltip\": \"{{playerName}}:  {{markup_escape(title)}} - {{markup_escape(artist)}}\" }'",
-    "on-click": "playerctl play-pause; pkill -RTMIN+5 waybar",
-    "on-click-right": "playerctl next; pkill -RTMIN+5 waybar",
-    "on-scroll-up": "playerctl position 10+; pkill -RTMIN+5 waybar",
-    "on-scroll-down": "playerctl position 10-; pkill -RTMIN+5 waybar",
-    "signal": 5,
+    "exec": "$HOME/.config/waybar/scripts/playerctl.sh",
+    "hide-empty-text": true,
+    "on-click": "playerctl --ignore-player=vivaldi play-pause",
+    "on-click-middle": "playerctl --ignore-player=vivaldi previous",
+    "on-click-right": "playerctl --ignore-player=vivaldi next",
+    "on-click-backward": "playerctl --ignore-player=vivaldi previous",
+    "on-click-forward": "playerctl --ignore-player=vivaldi next",
   },
 
   "custom/wf-recorder": {

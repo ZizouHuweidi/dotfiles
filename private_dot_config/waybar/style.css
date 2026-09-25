@@ -5,7 +5,6 @@
 }
 
 window#waybar {
-  /* background-color: rgba(18, 21, 29, 0.98); */
   /* background-color: #282828; */
   background-color: rgba(0, 0, 0, 0);
   /* border-top: 2px solid #98971a; */
@@ -29,6 +28,7 @@ window#waybar.hidden {
 #temperature,
 #clock,
 #mpris,
+#custom-playerctl,
 #mpd,
 #disk,
 #idle_inhibitor,
@@ -49,10 +49,8 @@ window#waybar.hidden {
   border-radius: 6px;
   background-clip: padding-box;
   color: #ebdbb2;
-  /* border-top: 3px solid #282828; */
-  border-top: 3px solid rgba(0, 0, 0, 0);
-  /* border-bottom: 3px solid #282828; */
-  border-bottom: 3px solid rgba(0, 0, 0, 0);
+  border-top: 3px solid rgba(0, 0, 0, 0); /*#282828;*/
+  border-bottom: 3px solid rgba(0, 0, 0, 0); /*#282828;*/
 }
 
 #custom-notification {
@@ -165,7 +163,8 @@ window#waybar.hidden {
   color: #83a598;
 }
 
-#mpris {
+#mpris,
+#custom-playerctl {
   color: #a89984;
 }
 
