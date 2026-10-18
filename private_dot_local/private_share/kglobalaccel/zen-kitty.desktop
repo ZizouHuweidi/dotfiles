@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Kitty
+Exec=kitty
+Icon=kitty
+StartupNotify=true
+X-KDE-Shortcuts=Meta+Return

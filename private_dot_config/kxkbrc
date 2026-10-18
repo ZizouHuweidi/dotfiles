@@ -1,0 +1,7 @@
+[Layout]
+Use=true
+LayoutList=us,ara
+VariantList=,
+Options=caps:swapescape,grp:alt_space_toggle
+ResetOldOptions=true
+SwitchMode=Global
