@@ -1,0 +1,13 @@
+[General]
+count=1
+rules=zen-picture-in-picture
+
+[zen-picture-in-picture]
+Description=Browser picture-in-picture: always above and on all desktops
+wmclassmatch=0
+title=(?i)^picture[ -]in[ -]picture$
+titlematch=3
+above=true
+aboverule=2
+desktops=
+desktopsrule=2
